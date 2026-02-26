@@ -1,0 +1,65 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T17:53:20.664Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 2,
+    "implemented": 2,
+    "items": [
+      {
+        "id": "REQ-37",
+        "summary": "Replace all instances of 'Nexiris Consultants LLP', 'Nexiris Consultants', and any other variations of the old company name across the entire codebase with 'Nexiris Global Pvt Ltd'. This includes: the Navigation.tsx wordmark/logo alt text, Footer.tsx company name and disclaimer text, frontend/index.html title tag, meta description, Open Graph tags (og:title, og:description, og:site_name), Twitter Card tags, and the JSON-LD Organisation structured data block (name, description fields). Also update any in-component text references in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx, and any other component where the old company name appears. Do not modify any immutable files.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html",
+          "frontend/src/components/Navigation.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/components/home/HeroSection.tsx",
+          "frontend/src/components/annual/PricingSection.tsx",
+          "frontend/src/components/annual/FAQSection.tsx",
+          "frontend/src/components/home/AnnualProgramSection.tsx",
+          "frontend/src/components/home/CredibilitySection.tsx",
+          "frontend/src/components/home/FinalCTASection.tsx",
+          "frontend/src/components/InquiryModal.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/index.html",
+          "frontend/src/components/Navigation.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/components/home/HeroSection.tsx",
+          "frontend/src/components/annual/FAQSection.tsx"
+        ]
+      },
+      {
+        "id": "REQ-38",
+        "summary": "In HeroSection.tsx, replace the current static background image with a looping, muted, autoplay HTML5 <video> element using the Pexels video URL https://www.pexels.com/download/video/28647987/ as the video src. The video must be set to autoPlay, muted, loop, and playsInline. It should be positioned absolutely to fill the full Hero section (object-fit: cover, width: 100%, height: 100%). Retain the existing dark overlay (rgba black, ~55% opacity) layered on top of the video for text readability. All existing Hero content (headline, subheading, CTA buttons, stats row) must remain fully visible and correctly layered above the overlay. Remove any reference to the static hero background image (hero-trade-bg.jpg) from HeroSection.tsx. The parallax scroll effect previously applied to the background image should be removed or adapted to work with the video element.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/home/HeroSection.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/home/HeroSection.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "build-request.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.html",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Navigation.tsx",
+    "frontend/src/components/annual/FAQSection.tsx",
+    "frontend/src/components/home/HeroSection.tsx",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

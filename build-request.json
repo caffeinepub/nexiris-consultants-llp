@@ -1,0 +1,72 @@
+{
+  "kind": "build_request",
+  "title": "Rebrand to Nexiris Global Pvt Ltd + Hero Video Background",
+  "projectName": "Nexiris Global",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-37",
+      "text": "Replace all instances of 'Nexiris Consultants LLP', 'Nexiris Consultants', and any other variations of the old company name across the entire codebase with 'Nexiris Global Pvt Ltd'. This includes: the Navigation.tsx wordmark/logo alt text, Footer.tsx company name and disclaimer text, frontend/index.html title tag, meta description, Open Graph tags (og:title, og:description, og:site_name), Twitter Card tags, and the JSON-LD Organisation structured data block (name, description fields). Also update any in-component text references in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx, and any other component where the old company name appears. Do not modify any immutable files.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-rebrand"
+        ],
+        "quotes": [
+          "Only Nexiris Global Pvt Ltd",
+          "this website is for Nexiris Global Pvt Ltd so clearly state that and everywhere where required and replace nexiris consultants written anywhere"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No instance of 'Nexiris Consultants LLP' or 'Nexiris Consultants' appears anywhere in the rendered site or source code (excluding immutable files)",
+        "Navigation wordmark/logo alt text reads 'Nexiris Global Pvt Ltd'",
+        "Footer company name reads 'Nexiris Global Pvt Ltd'",
+        "Footer disclaimer references 'Nexiris Global Pvt Ltd'",
+        "The <title> tag in index.html reads 'Nexiris Global Pvt Ltd | ...'",
+        "og:site_name and og:title in index.html reflect 'Nexiris Global Pvt Ltd'",
+        "JSON-LD structured data name field is 'Nexiris Global Pvt Ltd'",
+        "Twitter Card title reflects 'Nexiris Global Pvt Ltd'",
+        "All in-component text and headings that previously named the old entity now correctly display 'Nexiris Global Pvt Ltd'"
+      ]
+    },
+    {
+      "id": "REQ-38",
+      "text": "In HeroSection.tsx, replace the current static background image with a looping, muted, autoplay HTML5 <video> element using the Pexels video URL https://www.pexels.com/download/video/28647987/ as the video src. The video must be set to autoPlay, muted, loop, and playsInline. It should be positioned absolutely to fill the full Hero section (object-fit: cover, width: 100%, height: 100%). Retain the existing dark overlay (rgba black, ~55% opacity) layered on top of the video for text readability. All existing Hero content (headline, subheading, CTA buttons, stats row) must remain fully visible and correctly layered above the overlay. Remove any reference to the static hero background image (hero-trade-bg.jpg) from HeroSection.tsx. The parallax scroll effect previously applied to the background image should be removed or adapted to work with the video element.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-video"
+        ],
+        "quotes": [
+          "use this url https://www.pexels.com/download/video/28647987/",
+          "can u put a video in the background of a ship sailing"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The Hero section displays a looping, muted, autoplaying video background of a ship sailing",
+        "The video src is set to 'https://www.pexels.com/download/video/28647987/'",
+        "The video fills the full Hero section with object-fit cover",
+        "A dark semi-transparent overlay (~55% opacity) is rendered above the video for readability",
+        "All Hero text (headline, subheading) and CTA buttons are clearly readable above the overlay",
+        "The static hero-trade-bg.jpg background reference is removed from HeroSection.tsx",
+        "The video plays automatically on page load without requiring user interaction",
+        "No broken image references or missing background artifacts in the Hero section"
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not modify any immutable files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui/*",
+    "Do not add any parent company reference — only 'Nexiris Global Pvt Ltd' should appear, with no mention of 'a part of Nexiris Consultants'",
+    "Retain the existing dark overlay on the hero section for text readability when replacing the background with video"
+  ],
+  "nonGoals": [
+    "Changing the site layout, colour palette, typography, or any other visual design elements beyond what is specified",
+    "Adding new sections or removing existing sections",
+    "Modifying the backend Motoko actor",
+    "Changing the contact email or physical address"
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}

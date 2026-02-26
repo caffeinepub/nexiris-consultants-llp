@@ -1,0 +1,31 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-26T17:53:20.656Z",
+  "summary": "Both REQ-37 and REQ-38 are substantially implemented. The company name 'Nexiris Global Pvt Ltd' correctly replaces old branding across Navigation.tsx, Footer.tsx, HeroSection.tsx, FAQSection.tsx, and index.html (title, meta, OG, Twitter Card, JSON-LD). The Hero section now uses an HTML5 video element with the correct Pexels URL, autoPlay, muted, loop, playsInline, and absolute positioning with object-fit cover. The dark overlay is retained via bg-gradient-hero. One concern is that project_state.json summary still references 'a part of Nexiris Consultants' but this is a metadata file not rendered content. No diff content is shown for PricingSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, or InquiryModal.tsx so those updates cannot be confirmed.",
+  "missing_requirements": [
+    {
+      "id": "REQ-37",
+      "requirement": "Update in-component text references in PricingSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, and InquiryModal.tsx where the old company name appears",
+      "reason": "The diff only shows explicit changes to FAQSection.tsx, Footer.tsx, HeroSection.tsx, Navigation.tsx, and index.html. No diff content is shown for PricingSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, or InquiryModal.tsx, so it cannot be confirmed these files were updated to replace the old company name.",
+      "evidence": [
+        "frontend/src/components/annual/FAQSection.tsx",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/home/HeroSection.tsx",
+        "frontend/src/components/Navigation.tsx",
+        "frontend/index.html"
+      ]
+    }
+  ],
+  "hallucinated_features": [],
+  "confidence": 0.72,
+  "changed_files": [
+    "frontend-file-summaries.txt",
+    "frontend/index.html",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Navigation.tsx",
+    "frontend/src/components/annual/FAQSection.tsx",
+    "frontend/src/components/home/HeroSection.tsx",
+    "project_state.json"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Rebrand to Nexiris Global Pvt Ltd + Hero Video Background",
+  "requirements": [
+    {
+      "id": "REQ-37",
+      "summary": "Replace all instances of 'Nexiris Consultants LLP' and variations with 'Nexiris Global Pvt Ltd' across all frontend files including HTML meta tags, structured data, and component text",
+      "acceptanceCriteria": [
+        "No instance of 'Nexiris Consultants LLP' or 'Nexiris Consultants' appears anywhere in the rendered site or source code (excluding immutable files)",
+        "Navigation wordmark/logo alt text reads 'Nexiris Global Pvt Ltd'",
+        "Footer company name reads 'Nexiris Global Pvt Ltd'",
+        "Footer disclaimer references 'Nexiris Global Pvt Ltd'",
+        "The <title> tag in index.html reads 'Nexiris Global Pvt Ltd | ...'",
+        "og:site_name and og:title in index.html reflect 'Nexiris Global Pvt Ltd'",
+        "JSON-LD structured data name field is 'Nexiris Global Pvt Ltd'",
+        "Twitter Card title reflects 'Nexiris Global Pvt Ltd'",
+        "All in-component text and headings that previously named the old entity now correctly display 'Nexiris Global Pvt Ltd'"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Update the <title> tag to read 'Nexiris Global Pvt Ltd | ...', replace all meta description references to the old company name with 'Nexiris Global Pvt Ltd', update Open Graph tags (og:title, og:description, og:site_name) to reflect 'Nexiris Global Pvt Ltd', update Twitter Card tags (twitter:title) to reflect 'Nexiris Global Pvt Ltd', and update the JSON-LD Organization structured data block's name and description fields to use 'Nexiris Global Pvt Ltd'"
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Update the wordmark/logo alt text to read 'Nexiris Global Pvt Ltd' and replace any text instances of the old company name with 'Nexiris Global Pvt Ltd'"
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Replace all instances of 'Nexiris Consultants LLP' or 'Nexiris Consultants' in the company name display, brand column, and disclaimer text with 'Nexiris Global Pvt Ltd'"
+        },
+        {
+          "path": "frontend/src/components/home/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in headlines, subheadings, or other copy"
+        },
+        {
+          "path": "frontend/src/components/annual/PricingSection.tsx",
+          "operation": "modify",
+          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in pricing cards or feature descriptions"
+        },
+        {
+          "path": "frontend/src/components/annual/FAQSection.tsx",
+          "operation": "modify",
+          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in FAQ questions and answers"
+        },
+        {
+          "path": "frontend/src/components/home/AnnualProgramSection.tsx",
+          "operation": "modify",
+          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in pricing cards or section content"
+        },
+        {
+          "path": "frontend/src/components/home/CredibilitySection.tsx",
+          "operation": "modify",
+          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in trust quotes or statistics content"
+        },
+        {
+          "path": "frontend/src/components/home/FinalCTASection.tsx",
+          "operation": "modify",
+          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in CTA section copy"
+        },
+        {
+          "path": "frontend/src/components/InquiryModal.tsx",
+          "operation": "modify",
+          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in modal title, labels, or confirmation messages"
+        }
+      ]
+    },
+    {
+      "id": "REQ-38",
+      "summary": "Replace the static hero background image with a looping, muted, autoplay HTML5 video from Pexels while retaining the dark overlay and all existing Hero content",
+      "acceptanceCriteria": [
+        "The Hero section displays a looping, muted, autoplaying video background of a ship sailing",
+        "The video src is set to 'https://www.pexels.com/download/video/28647987/'",
+        "The video fills the full Hero section with object-fit cover",
+        "A dark semi-transparent overlay (~55% opacity) is rendered above the video for readability",
+        "All Hero text (headline, subheading) and CTA buttons are clearly readable above the overlay",
+        "The static hero-trade-bg.jpg background reference is removed from HeroSection.tsx",
+        "The video plays automatically on page load without requiring user interaction",
+        "No broken image references or missing background artifacts in the Hero section"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/home/HeroSection.tsx",
+          "operation": "modify",
+          "description": "Replace the current static background image reference (hero-trade-bg.jpg) with an HTML5 <video> element using src='https://www.pexels.com/download/video/28647987/'. Set the video to autoPlay, muted, loop, and playsInline. Position the video absolutely to fill the full Hero section with object-fit: cover, width: 100%, height: 100%. Retain the existing dark overlay (rgba black, ~55% opacity) layered on top of the video. Ensure all existing Hero content (headline, subheading, CTA buttons, stats row) remains fully visible and correctly layered above the overlay. Remove or adapt the parallax scroll effect previously applied to the background image"
+        }
+      ]
+    }
+  ]
+}

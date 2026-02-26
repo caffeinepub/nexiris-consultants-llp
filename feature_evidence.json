@@ -1,0 +1,45 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-replace-all-instances-of-nexiris-consultants-llp-nexiris-consultants-and-any-other-variations-of-the-old-company-name-across-the-entire-codebase-with-nexiris-global-pvt-ltd-this-includes-the-navigation-tsx-wordmark-logo-alt-text-footer-tsx-company-name-and-disclaimer-text-frontend-index-html-title-tag-meta-description-open-graph-tags-og-title-og-description-og-site-name-twitter-card-tags-and-the-json-ld-organisation-structured-data-block-name-description-fields-also-update-any-in-component-text-references-in-herosection-tsx-pricingsection-tsx-faqsection-tsx-annualprogramsection-tsx-credibilitysection-tsx-finalctasection-tsx-inquirymodal-tsx-and-any-other-component-where-the-old-company-name-appears-do-not-modify-any-immutable-files",
+      "featureTitle": "Replace all instances of 'Nexiris Consultants LLP', 'Nexiris Consultants', and any other variations of the old company name across the entire codebase with 'Nexiris Global Pvt Ltd'. This includes: the Navigation.tsx wordmark/logo alt text, Footer.tsx company name and disclaimer text, frontend/index.html title tag, meta description, Open Graph tags (og:title, og:description, og:site_name), Twitter Card tags, and the JSON-LD Organisation structured data block (name, description fields). Also update any in-component text references in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx, and any other component where the old company name appears. Do not modify any immutable files.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Navigation.tsx",
+        "frontend/src/components/annual/FAQSection.tsx",
+        "frontend/src/components/home/HeroSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-37"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-in-herosection-tsx-replace-the-current-static-background-image-with-a-looping-muted-autoplay-html5-video-element-using-the-pexels-video-url-https-www-pexels-com-download-video-28647987-as-the-video-src-the-video-must-be-set-to-autoplay-muted-loop-and-playsinline-it-should-be-positioned-absolutely-to-fill-the-full-hero-section-object-fit-cover-width-100-height-100-retain-the-existing-dark-overlay-rgba-black-55-opacity-layered-on-top-of-the-video-for-text-readability-all-existing-hero-content-headline-subheading-cta-buttons-stats-row-must-remain-fully-visible-and-correctly-layered-above-the-overlay-remove-any-reference-to-the-static-hero-background-image-hero-trade-bg-jpg-from-herosection-tsx-the-parallax-scroll-effect-previously-applied-to-the-background-image-should-be-removed-or-adapted-to-work-with-the-video-element",
+      "featureTitle": "In HeroSection.tsx, replace the current static background image with a looping, muted, autoplay HTML5 <video> element using the Pexels video URL https://www.pexels.com/download/video/28647987/ as the video src. The video must be set to autoPlay, muted, loop, and playsInline. It should be positioned absolutely to fill the full Hero section (object-fit: cover, width: 100%, height: 100%). Retain the existing dark overlay (rgba black, ~55% opacity) layered on top of the video for text readability. All existing Hero content (headline, subheading, CTA buttons, stats row) must remain fully visible and correctly layered above the overlay. Remove any reference to the static hero background image (hero-trade-bg.jpg) from HeroSection.tsx. The parallax scroll effect previously applied to the background image should be removed or adapted to work with the video element.",
+      "files": [
+        "frontend/src/components/home/HeroSection.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-38"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
