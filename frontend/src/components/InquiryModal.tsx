@@ -101,7 +101,7 @@ export default function InquiryModal() {
                 Inquiry Sent!
               </h3>
               <p className="text-brand-dark/60 text-sm mb-6 max-w-xs">
-                Thank you for reaching out. A Nexiris specialist will contact you within 24 business hours.
+                Thank you for reaching out. A Nexiris Global specialist will contact you within 24 business hours.
               </p>
               <Button
                 onClick={handleClose}

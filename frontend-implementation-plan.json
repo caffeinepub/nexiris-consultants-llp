@@ -1,93 +1,186 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Rebrand to Nexiris Global Pvt Ltd + Hero Video Background",
+  "title": "Force rebuild and redeploy all latest changes (Our Legacy page, nav link, brand name, build fixes)",
   "requirements": [
     {
-      "id": "REQ-37",
-      "summary": "Replace all instances of 'Nexiris Consultants LLP' and variations with 'Nexiris Global Pvt Ltd' across all frontend files including HTML meta tags, structured data, and component text",
+      "id": "REQ-47",
+      "summary": "Create and fully implement the OurLegacy page component with brand heritage intro, Firm Profile CTA, and Visit Nexiris Consultants link, using Layout wrapper and brand styling",
       "acceptanceCriteria": [
-        "No instance of 'Nexiris Consultants LLP' or 'Nexiris Consultants' appears anywhere in the rendered site or source code (excluding immutable files)",
-        "Navigation wordmark/logo alt text reads 'Nexiris Global Pvt Ltd'",
-        "Footer company name reads 'Nexiris Global Pvt Ltd'",
-        "Footer disclaimer references 'Nexiris Global Pvt Ltd'",
-        "The <title> tag in index.html reads 'Nexiris Global Pvt Ltd | ...'",
-        "og:site_name and og:title in index.html reflect 'Nexiris Global Pvt Ltd'",
-        "JSON-LD structured data name field is 'Nexiris Global Pvt Ltd'",
-        "Twitter Card title reflects 'Nexiris Global Pvt Ltd'",
-        "All in-component text and headings that previously named the old entity now correctly display 'Nexiris Global Pvt Ltd'"
+        "Navigating to /our-legacy renders the OurLegacy page without errors",
+        "'View Firm Profile' button opens the PDF URL in a new tab",
+        "'Visit Nexiris Consultants' link opens https://www.nexirisconsultants.com in a new tab",
+        "Page uses Montserrat headings and Inter body copy",
+        "Page uses Frost White background and Minty Blue accents consistently"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/OurLegacy.tsx",
+          "operation": "create",
+          "description": "Create the OurLegacy page component with: (1) a brand heritage intro section connecting Nexiris Global to Nexiris Consultants using Frost White background and Minty Blue accents with Montserrat headings and Inter body text; (2) a primary button labeled 'View Firm Profile' that opens https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf in a new tab via target='_blank' and rel='noopener noreferrer'; (3) a secondary link/button labeled 'Visit Nexiris Consultants' that opens https://www.nexirisconsultants.com in a new tab. The component must be a default export and use semantic HTML with proper accessibility attributes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-48",
+      "summary": "Register the /our-legacy route in App.tsx within TanStack Router configuration as a child of Layout route, ensuring correct imports and no TypeScript errors",
+      "acceptanceCriteria": [
+        "App.tsx compiles without TypeScript errors",
+        "The /our-legacy route resolves to the OurLegacy page component",
+        "Existing routes (/, /annual-program) continue to function correctly"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add the /our-legacy route to the TanStack Router configuration as a child of the Layout route. Import OurLegacy from './pages/OurLegacy' and register it using createRoute with path: '/our-legacy' and component: OurLegacy, ensuring it is added to the routeTree alongside the existing Home and AnnualProgram routes. Verify no TypeScript import or type errors are introduced."
+        }
+      ]
+    },
+    {
+      "id": "REQ-49",
+      "summary": "Add 'Our Legacy' navigation link to Navigation.tsx alongside existing nav links with consistent Minty Blue active/hover styling and client-side routing",
+      "acceptanceCriteria": [
+        "Navigation bar displays 'Home', 'Pricing', and 'Our Legacy' links",
+        "Clicking 'Our Legacy' navigates to /our-legacy",
+        "Active/hover state on 'Our Legacy' link uses Minty Blue accent",
+        "Navigation.tsx compiles without TypeScript errors"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Add an 'Our Legacy' navigation link in the nav menu (both desktop and mobile versions) alongside 'Home' and 'Pricing'. Use TanStack Router's Link component to navigate to '/our-legacy' with the same active/hover Minty Blue styling applied to other nav links. Ensure the link uses client-side routing and compiles without TypeScript errors."
+        }
+      ]
+    },
+    {
+      "id": "REQ-50",
+      "summary": "Update all company name references across the codebase to consistently use 'Nexiris Global' in all frontend components, HTML meta tags, and structured data",
+      "acceptanceCriteria": [
+        "No occurrence of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' appears in any non-immutable file",
+        "All user-facing text and meta tags display 'Nexiris Global'",
+        "frontend/index.html title and meta tags reference 'Nexiris Global'"
       ],
       "file_operations": [
         {
           "path": "frontend/index.html",
           "operation": "modify",
-          "description": "Update the <title> tag to read 'Nexiris Global Pvt Ltd | ...', replace all meta description references to the old company name with 'Nexiris Global Pvt Ltd', update Open Graph tags (og:title, og:description, og:site_name) to reflect 'Nexiris Global Pvt Ltd', update Twitter Card tags (twitter:title) to reflect 'Nexiris Global Pvt Ltd', and update the JSON-LD Organization structured data block's name and description fields to use 'Nexiris Global Pvt Ltd'"
+          "description": "Update all company name references to 'Nexiris Global' in the title tag, meta description, og:title, og:description, og:site_name, Twitter Card tags, and JSON-LD structured data (name and description fields). Replace any occurrences of 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants' with 'Nexiris Global'."
         },
         {
           "path": "frontend/src/components/Navigation.tsx",
           "operation": "modify",
-          "description": "Update the wordmark/logo alt text to read 'Nexiris Global Pvt Ltd' and replace any text instances of the old company name with 'Nexiris Global Pvt Ltd'"
+          "description": "Update the logo alt text to reference 'Nexiris Global' instead of any other company name variant. Ensure no references to 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' remain in this component."
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Replace all instances of 'Nexiris Consultants LLP' or 'Nexiris Consultants' in the company name display, brand column, and disclaimer text with 'Nexiris Global Pvt Ltd'"
+          "description": "Update all company name references in the footer text, copyright notice, and disclaimer to 'Nexiris Global'. Replace any occurrences of 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants' with 'Nexiris Global'."
         },
         {
           "path": "frontend/src/components/home/HeroSection.tsx",
           "operation": "modify",
-          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in headlines, subheadings, or other copy"
+          "description": "Update all in-component text referencing the company name to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
         },
         {
           "path": "frontend/src/components/annual/PricingSection.tsx",
           "operation": "modify",
-          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in pricing cards or feature descriptions"
+          "description": "Update all company name references in pricing card text and descriptions to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
         },
         {
           "path": "frontend/src/components/annual/FAQSection.tsx",
           "operation": "modify",
-          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in FAQ questions and answers"
+          "description": "Update all company name references in FAQ answers to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
         },
         {
           "path": "frontend/src/components/home/AnnualProgramSection.tsx",
           "operation": "modify",
-          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in pricing cards or section content"
+          "description": "Update all company name references in section text to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
         },
         {
           "path": "frontend/src/components/home/CredibilitySection.tsx",
           "operation": "modify",
-          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in trust quotes or statistics content"
+          "description": "Update all company name references in stats section text to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
         },
         {
           "path": "frontend/src/components/home/FinalCTASection.tsx",
           "operation": "modify",
-          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in CTA section copy"
+          "description": "Update all company name references in CTA section text to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
         },
         {
           "path": "frontend/src/components/InquiryModal.tsx",
           "operation": "modify",
-          "description": "Replace any text references to the old company name with 'Nexiris Global Pvt Ltd' in modal title, labels, or confirmation messages"
+          "description": "Update all company name references in modal text and form labels to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
         }
       ]
     },
     {
-      "id": "REQ-38",
-      "summary": "Replace the static hero background image with a looping, muted, autoplay HTML5 video from Pexels while retaining the dark overlay and all existing Hero content",
+      "id": "REQ-51",
+      "summary": "Audit and resolve all TypeScript compilation errors across the frontend, fixing broken imports, ensuring HowItWorksSection.tsx is valid or removed, and resolving type mismatches",
       "acceptanceCriteria": [
-        "The Hero section displays a looping, muted, autoplaying video background of a ship sailing",
-        "The video src is set to 'https://www.pexels.com/download/video/28647987/'",
-        "The video fills the full Hero section with object-fit cover",
-        "A dark semi-transparent overlay (~55% opacity) is rendered above the video for readability",
-        "All Hero text (headline, subheading) and CTA buttons are clearly readable above the overlay",
-        "The static hero-trade-bg.jpg background reference is removed from HeroSection.tsx",
-        "The video plays automatically on page load without requiring user interaction",
-        "No broken image references or missing background artifacts in the Hero section"
+        "Frontend builds with zero TypeScript errors or warnings that block compilation",
+        "backend/main.mo compiles without errors",
+        "All page routes render correctly in the deployed application",
+        "No broken imports remain in any component file"
       ],
       "file_operations": [
         {
+          "path": "frontend/src/components/home/HowItWorksSection.tsx",
+          "operation": "modify",
+          "description": "Ensure HowItWorksSection.tsx is a complete, valid component that renders a 4-step 'How It Works' process with scroll animations. If the component is empty or broken, make it a valid functional component with proper TypeScript types. Verify it exports a default function component and uses correct prop types if any are passed from Home.tsx."
+        },
+        {
+          "path": "frontend/src/pages/Home.tsx",
+          "operation": "modify",
+          "description": "Verify the import of HowItWorksSection is correct and the component is properly integrated in the Home page composition. If HowItWorksSection was empty or broken, ensure it is now imported and rendered correctly. Fix any broken import paths or type errors related to this or other section components."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Audit and fix any broken imports or TypeScript type errors in Navigation.tsx. Ensure all imported modules (e.g., TanStack Router Link, useModal hook) resolve correctly and all component props have proper types."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Audit and fix any broken imports or TypeScript type errors in Footer.tsx. Ensure all imported modules resolve correctly and all component code compiles without errors."
+        },
+        {
           "path": "frontend/src/components/home/HeroSection.tsx",
           "operation": "modify",
-          "description": "Replace the current static background image reference (hero-trade-bg.jpg) with an HTML5 <video> element using src='https://www.pexels.com/download/video/28647987/'. Set the video to autoPlay, muted, loop, and playsInline. Position the video absolutely to fill the full Hero section with object-fit: cover, width: 100%, height: 100%. Retain the existing dark overlay (rgba black, ~55% opacity) layered on top of the video. Ensure all existing Hero content (headline, subheading, CTA buttons, stats row) remains fully visible and correctly layered above the overlay. Remove or adapt the parallax scroll effect previously applied to the background image"
+          "description": "Audit and fix any broken imports or TypeScript type errors in HeroSection.tsx. Ensure all component code compiles without errors and prop types are correctly defined."
+        },
+        {
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Resolve any type mismatches in useQueries.ts, ensuring the useSubmitInquiry mutation hook correctly types the form data parameters and backend actor method call. Verify the mutation function signature matches the expected backend interface."
+        },
+        {
+          "path": "frontend/src/components/InquiryModal.tsx",
+          "operation": "modify",
+          "description": "Resolve any type mismatches in InquiryModal.tsx, ensuring form state types, validation logic, and the useSubmitInquiry hook invocation all have correct TypeScript types. Fix any errors related to modal state or form submission."
+        }
+      ]
+    },
+    {
+      "id": "REQ-52",
+      "summary": "Ensure the Nexiris logo image renders correctly in Navigation.tsx and Footer.tsx using the path '/assets/generated/nexiris-logo.png'",
+      "acceptanceCriteria": [
+        "Logo is visible in the sticky navbar on the left side",
+        "Logo is visible in the footer at a smaller size",
+        "No broken image icon appears for the logo in either location",
+        "The src attribute value is '/assets/generated/nexiris-logo.png'"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Navigation.tsx",
+          "operation": "modify",
+          "description": "Update the logo <img> src attribute to '/assets/generated/nexiris-logo.png' and ensure the alt text is set to 'Nexiris Global'. Verify the logo renders on the left side of the navbar with appropriate width and height attributes for optimal display."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update the logo <img> src attribute to '/assets/generated/nexiris-logo.png' and ensure the alt text is set to 'Nexiris Global'. Set the logo to display at a smaller size appropriate for the footer (e.g., via CSS class or inline height/width), ensuring it renders correctly without a broken image icon."
         }
       ]
     }

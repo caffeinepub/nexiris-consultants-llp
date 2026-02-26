@@ -16,7 +16,7 @@ export default function Footer() {
             <div className="mb-5">
               <img
                 src="/assets/generated/nexiris-logo.png"
-                alt="Nexiris Global Pvt Ltd"
+                alt="Nexiris Global"
                 className="h-10 w-auto"
                 onError={(e) => {
                   const target = e.target as HTMLImageElement;
@@ -26,7 +26,7 @@ export default function Footer() {
                 }}
               />
               <span className="font-heading font-bold text-2xl text-brand-mintyBlue hidden">
-                Nexiris Global Pvt Ltd
+                Nexiris Global
               </span>
             </div>
             <p className="text-white/70 text-sm leading-relaxed">
@@ -63,6 +63,14 @@ export default function Footer() {
                   className="text-white/70 text-sm hover:text-brand-mintyBlue transition-colors"
                 >
                   Annual Program
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/our-legacy"
+                  className="text-white/70 text-sm hover:text-brand-mintyBlue transition-colors"
+                >
+                  Our Legacy
                 </Link>
               </li>
             </ul>
@@ -105,9 +113,9 @@ export default function Footer() {
         <div className="border-t border-white/10 mt-12 pt-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="text-white/40 text-xs text-center md:text-left">
-              <p>© {year} Nexiris Global Pvt Ltd. All rights reserved.</p>
+              <p>© {year} Nexiris Global. All rights reserved.</p>
               <p className="mt-1">
-                The information provided in our reports is for due diligence purposes only. Nexiris Global Pvt Ltd does not provide legal, financial, or investment advice.
+                The information provided in our reports is for due diligence purposes only. Nexiris Global does not provide legal, financial, or investment advice.
               </p>
             </div>
             <div className="text-white/40 text-xs flex items-center gap-1 shrink-0">

@@ -50,7 +50,7 @@ export default function Navigation() {
           <Link to="/" className="flex items-center gap-2">
             <img
               src="/assets/generated/nexiris-logo.png"
-              alt="Nexiris Global Pvt Ltd"
+              alt="Nexiris Global"
               className="h-9 w-auto"
               onError={(e) => {
                 const target = e.target as HTMLImageElement;
@@ -63,7 +63,7 @@ export default function Navigation() {
               className="font-heading font-bold text-xl hidden"
               style={{ color: isScrolled ? '#3ECFB2' : '#fff' }}
             >
-              Nexiris Global Pvt Ltd
+              Nexiris Global
             </span>
           </Link>
 
@@ -92,6 +92,14 @@ export default function Navigation() {
               }`}
             >
               Pricing
+            </Link>
+            <Link
+              to="/our-legacy"
+              className={`font-medium text-sm transition-colors hover:text-brand-mintyBlue ${
+                isScrolled ? 'text-brand-dark' : 'text-white'
+              }`}
+            >
+              Our Legacy
             </Link>
             <button
               onClick={handleEnquire}
@@ -135,6 +143,13 @@ export default function Navigation() {
                 className="px-4 py-2.5 text-brand-dark font-medium text-sm rounded-md hover:bg-brand-frostGray hover:text-brand-mintyBlue transition-colors"
               >
                 Pricing
+              </Link>
+              <Link
+                to="/our-legacy"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="px-4 py-2.5 text-brand-dark font-medium text-sm rounded-md hover:bg-brand-frostGray hover:text-brand-mintyBlue transition-colors"
+              >
+                Our Legacy
               </Link>
               <button
                 onClick={handleEnquire}

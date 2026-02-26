@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import InquiryModal from '@/components/InquiryModal';
 import Home from '@/pages/Home';
 import AnnualProgram from '@/pages/AnnualProgram';
+import OurLegacy from '@/pages/OurLegacy';
 
 // Modal context
 interface ModalContextType {
@@ -70,7 +71,13 @@ const annualProgramRoute = createRoute({
   component: AnnualProgram,
 });
 
-const routeTree = rootRoute.addChildren([homeRoute, annualProgramRoute]);
+const ourLegacyRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/our-legacy',
+  component: OurLegacy,
+});
+
+const routeTree = rootRoute.addChildren([homeRoute, annualProgramRoute, ourLegacyRoute]);
 
 const router = createRouter({ routeTree });
 

@@ -1,9 +1,8 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 13,
-  "summary": "Premium institutional website for NEXIRIS GLOBAL PVT LTD (a part of Nexiris Consultants), a global advisory firm. Company name updated site-wide to 'Nexiris Global Pvt Ltd' — all instances of 'Nexiris Consultants LLP' and 'Nexiris Consultants' replaced. Two-page structure: (1) Home with Hero (looping ship-sailing video background from Pexels), Problem, What We Deliver (minimal icon-card grid, analyst consultation removed), Trade Trust Score™, Annual Program highlight (including $649 Single Report tier), Credibility stats (clean typography), Final CTA; (2) Pricing page with $5,499/year annual plan, $649 single report tier, FAQ accordion, and footer. Contact info: nexirisconsultants@gmail.com, Unit no. 419, DLF CORPORATE GREENS, Sector 74A, Gurugram, Haryana 122004. ISO certification and GDPR compliant claims removed. SEO optimisation applied (meta tags, Open Graph, JSON-LD structured data, semantic HTML, keyword-rich copy). Brand palette: Frost White (base/backgrounds) + Minty Blue (accents, buttons, headings, borders). Typography: Montserrat for all headings, Inter for body copy. Minimal design. Inquiry modal has solid opaque background. Rich scroll-triggered animations retained.",
+  "projectStateVersion": 23,
+  "summary": "Premium institutional website for NEXIRIS GLOBAL (brand name simplified to 'Nexiris Global' everywhere, replacing all prior variants). Two-page structure plus new 'Our Legacy' page: (1) Home with Hero (looping ship-sailing video background, transparent overlay, left-aligned content — hero stats row removed), Problem, What We Deliver (minimal icon-card grid, analyst consultation removed), Trade Trust Score™, Annual Program highlight (including $649 Single Report tier), Credibility stats (clean typography), Final CTA; (2) Pricing page with $5,499/year annual plan, $649 single report tier, FAQ accordion, and footer; (3) Our Legacy page (/our-legacy) with brand heritage intro connecting Nexiris Global to Nexiris Consultants, prominent 'View Firm Profile' CTA opening the firm profile PDF in a new tab, and a secondary link to nexirisconsultants.com — accessible via main navigation. Contact info: nexirisconsultants@gmail.com, Unit no. 419, DLF CORPORATE GREENS, Sector 74A, Gurugram, Haryana 122004. ISO certification and GDPR compliant claims removed. SEO optimisation applied. Brand palette: Frost White + Minty Blue. Typography: Montserrat headings, Inter body. Minimal design.",
   "architectural_notes": [
-    "Two-page structure: index.html (Home) and pricing.html (Annual Program/Pricing)",
     "Typography: Elegant serif for headings, clean modern sans-serif for body; strong hierarchy, generous spacing",
     "Inquiry form is a modal overlay (no backend); displays confirmation message on submit",
     "Colour palette updated to official logo colours: Deep Indigo #2E1F8C (primary), Rich Gold #E8A820 (accents), Slate Purple #4A3A7A (secondary)",
@@ -11,14 +10,15 @@
     "Typography updated to Montserrat (headings) + Inter (body) — Playfair Display removed",
     "Design philosophy: minimal — infographics stripped back, How It Works section removed, stat cards are typography-only",
     "SEO layer added: meta title/description, Open Graph/Twitter Card tags, JSON-LD organisation schema, semantic HTML improvements, keyword-rich copy for Indian exporter verification / counterparty risk intelligence keywords",
-    "Hero section uses a looping muted autoplay <video> background (Pexels ship sailing video) with dark overlay instead of a static image"
+    "Hero section uses a looping muted autoplay <video> background (Pexels ship sailing video) with dark overlay instead of a static image",
+    "Three-page structure: index.html (Home), pricing.html (Pricing), and /our-legacy (Our Legacy — links to external Nexiris Consultants site and firm profile PDF)"
   ],
   "known_issues": [
     "Logo not rendering in navbar and footer — <img> reference to nexiris-logo.png needs repair",
     "$649 Single Report tier missing from Home page Annual Program highlight section",
     "Inquiry modal background is transparent — modal needs a solid opaque background"
   ],
-  "isFixRequest": false,
+  "isFixRequest": true,
   "existing_features": [
     {
       "id": "feature-apply-a-consistent-global-visual-theme-across-both-pages-deep-royal-purple-2c1654-or-equivalent-as-primary-brand-color-rich-gold-saffron-yellow-c9963a-or-equivalent-for-accents-buttons-and-score-indicators-clean-white-backgrounds-and-dark-charcoal-deep-purple-for-body-text-use-an-elegant-serif-e-g-playfair-display-for-headings-and-a-refined-sans-serif-e-g-inter-for-body-copy-enforce-generous-whitespace-strong-typographic-hierarchy-no-gradients-no-flashy-animations-and-subtle-hover-effects-only-the-overall-aesthetic-must-resemble-a-boutique-institutional-advisory-firm",
@@ -315,6 +315,118 @@
         "REQ-38"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-in-herosection-tsx-remove-the-dark-overlay-div-or-set-its-background-to-fully-transparent-opacity-0-so-the-ship-video-background-is-fully-visible-without-any-tint-or-gradient-overlay-do-not-remove-the-overlay-element-itself-if-it-structurally-separates-the-video-from-the-content-layer-simply-make-its-background-color-completely-transparent",
+      "title": "In HeroSection.tsx, remove the dark overlay div (or set its background to fully transparent / opacity-0) so the ship video background is fully visible without any tint or gradient overlay. Do not remove the overlay element itself if it structurally separates the video from the content layer — simply make its background color completely transparent.",
+      "reqIds": [
+        "REQ-39"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-in-herosection-tsx-left-align-all-hero-content-the-headline-subheading-and-both-cta-buttons-request-verification-and-view-sample-report-so-they-are-positioned-to-the-left-side-of-the-hero-section-the-stats-row-if-present-should-also-be-left-aligned-use-left-aligned-text-classes-and-left-justified-flex-grid-alignment-the-content-container-should-be-positioned-on-the-left-half-of-the-hero-e-g-max-w-2xl-or-similar-not-centered",
+      "title": "In HeroSection.tsx, left-align all Hero content — the headline, subheading, and both CTA buttons ('Request Verification' and 'View Sample Report') — so they are positioned to the left side of the hero section. The stats row (if present) should also be left-aligned. Use left-aligned text classes and left-justified flex/grid alignment. The content container should be positioned on the left half of the hero (e.g., max-w-2xl or similar), not centered.",
+      "reqIds": [
+        "REQ-40"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-all-instances-of-nexiris-global-pvt-ltd-nexiris-consultants-llp-nexiris-consultants-and-any-other-company-name-variants-across-the-entire-codebase-with-nexiris-global-this-includes-navigation-tsx-wordmark-logo-alt-text-footer-tsx-company-name-and-disclaimer-text-frontend-index-html-title-tag-meta-description-open-graph-tags-og-title-og-description-og-site-name-twitter-card-tags-json-ld-organisation-structured-data-block-name-description-fields-and-all-in-component-text-references-in-herosection-tsx-pricingsection-tsx-faqsection-tsx-annualprogramsection-tsx-credibilitysection-tsx-finalctasection-tsx-inquirymodal-tsx-and-any-other-component-where-the-old-name-appears-do-not-modify-any-immutable-files",
+      "title": "Replace all instances of 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', 'Nexiris Consultants', and any other company name variants across the entire codebase with 'Nexiris Global'. This includes: Navigation.tsx wordmark/logo alt text, Footer.tsx company name and disclaimer text, frontend/index.html title tag, meta description, Open Graph tags (og:title, og:description, og:site_name), Twitter Card tags, JSON-LD Organisation structured data block (name, description fields), and all in-component text references in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx, and any other component where the old name appears. Do not modify any immutable files.",
+      "reqIds": [
+        "REQ-41"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-remove-the-stats-row-from-herosection-tsx-specifically-the-three-stat-callouts-15-years-of-experience-2400-verifications-and-40-countries-the-remainder-of-the-hero-content-headline-subheading-cta-buttons-must-remain-intact-and-correctly-displayed",
+      "title": "Remove the stats row from HeroSection.tsx — specifically the three stat callouts '15+ Years of Experience', '2400+ Verifications', and '40+ Countries'. The remainder of the hero content (headline, subheading, CTA buttons) must remain intact and correctly displayed.",
+      "reqIds": [
+        "REQ-42"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-our-legacy-page-at-route-our-legacy-the-page-must-include-1-a-clean-brand-heritage-intro-section-connecting-nexiris-global-to-its-roots-via-nexiris-consultants-written-in-the-existing-frost-white-minty-blue-palette-with-montserrat-headings-and-inter-body-copy-2-a-prominent-primary-cta-button-labelled-view-firm-profile-that-opens-the-pdf-at-https-www-nexirisconsultants-com-files-ugd-9b0883-a8ad90d67710468a9bdab66b562c8b7a-pdf-in-a-new-tab-3-a-secondary-link-button-labelled-visit-nexiris-consultants-or-similar-that-opens-https-www-nexirisconsultants-com-in-a-new-tab-the-page-must-use-the-existing-layout-wrapper-navigation-footer-and-be-registered-in-the-tanstack-router-configuration-in-app-tsx",
+      "title": "Create a new 'Our Legacy' page at route '/our-legacy'. The page must include: (1) A clean brand heritage intro section connecting Nexiris Global to its roots via Nexiris Consultants, written in the existing Frost White + Minty Blue palette with Montserrat headings and Inter body copy; (2) A prominent primary CTA button labelled 'View Firm Profile' that opens the PDF at https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf in a new tab; (3) A secondary link/button labelled 'Visit Nexiris Consultants' (or similar) that opens https://www.nexirisconsultants.com in a new tab. The page must use the existing Layout wrapper (Navigation + Footer) and be registered in the TanStack Router configuration in App.tsx.",
+      "reqIds": [
+        "REQ-43"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-our-legacy-navigation-link-to-the-main-navigation-tsx-bar-positioned-alongside-the-existing-home-and-pricing-links-clicking-it-should-navigate-to-the-our-legacy-route-using-the-client-side-router-apply-the-same-active-hover-styling-minty-blue-accent-as-the-existing-nav-links",
+      "title": "Add an 'Our Legacy' navigation link to the main Navigation.tsx bar, positioned alongside the existing 'Home' and 'Pricing' links. Clicking it should navigate to the '/our-legacy' route using the client-side router. Apply the same active/hover styling (Minty Blue accent) as the existing nav links.",
+      "reqIds": [
+        "REQ-44"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-fix-all-build-compilation-errors-causing-the-deployment-to-fail-this-includes-resolving-any-typescript-type-errors-missing-imports-undefined-variables-incorrect-module-references-and-any-other-issues-that-prevent-the-frontend-or-backend-from-compiling-and-deploying-successfully-ensure-the-motoko-backend-actor-in-backend-main-mo-compiles-without-errors-and-the-react-typescript-frontend-builds-without-errors-or-warnings-that-block-compilation",
+      "title": "Audit and fix all build/compilation errors causing the deployment to fail. This includes resolving any TypeScript type errors, missing imports, undefined variables, incorrect module references, and any other issues that prevent the frontend or backend from compiling and deploying successfully. Ensure the Motoko backend actor in backend/main.mo compiles without errors and the React/TypeScript frontend builds without errors or warnings that block compilation.",
+      "reqIds": [
+        "REQ-45"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-fix-all-build-and-compilation-errors-preventing-successful-deployment-resolve-any-typescript-type-errors-missing-imports-undefined-variables-incorrect-module-references-and-any-other-issues-in-the-react-typescript-frontend-that-block-compilation-ensure-the-motoko-backend-actor-in-backend-main-mo-compiles-without-errors-pay-particular-attention-to-1-the-ourlegacy-page-component-and-its-route-registration-in-app-tsx-2-any-broken-imports-across-navigation-tsx-footer-tsx-herosection-tsx-and-all-home-annual-page-components-3-any-type-mismatches-in-usequeries-ts-inquirymodal-tsx-or-hooks-4-howitworkssection-tsx-which-appears-empty-truncated-and-may-cause-import-errors-if-still-referenced-ensure-it-is-either-properly-defined-or-its-import-removed-from-home-tsx",
+      "title": "Audit and fix all build and compilation errors preventing successful deployment. Resolve any TypeScript type errors, missing imports, undefined variables, incorrect module references, and any other issues in the React/TypeScript frontend that block compilation. Ensure the Motoko backend actor in backend/main.mo compiles without errors. Pay particular attention to: (1) the OurLegacy page component and its route registration in App.tsx; (2) any broken imports across Navigation.tsx, Footer.tsx, HeroSection.tsx, and all home/annual page components; (3) any type mismatches in useQueries.ts, InquiryModal.tsx, or hooks; (4) HowItWorksSection.tsx which appears empty/truncated and may cause import errors if still referenced — ensure it is either properly defined or its import removed from Home.tsx.",
+      "reqIds": [
+        "REQ-46"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-ourlegacy-page-component-is-fully-and-correctly-defined-at-frontend-src-pages-ourlegacy-tsx-with-1-a-clean-brand-heritage-intro-section-connecting-nexiris-global-to-its-roots-via-nexiris-consultants-using-the-frost-white-minty-blue-palette-with-montserrat-headings-and-inter-body-copy-2-a-prominent-primary-cta-button-labelled-view-firm-profile-that-opens-https-www-nexirisconsultants-com-files-ugd-9b0883-a8ad90d67710468a9bdab66b562c8b7a-pdf-in-a-new-tab-3-a-secondary-link-button-labelled-visit-nexiris-consultants-that-opens-https-www-nexirisconsultants-com-in-a-new-tab-the-page-must-use-the-existing-layout-wrapper-navigation-footer",
+      "title": "Ensure the OurLegacy page component is fully and correctly defined at frontend/src/pages/OurLegacy.tsx with: (1) a clean brand heritage intro section connecting Nexiris Global to its roots via Nexiris Consultants, using the Frost White + Minty Blue palette with Montserrat headings and Inter body copy; (2) a prominent primary CTA button labelled 'View Firm Profile' that opens https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf in a new tab; (3) a secondary link/button labelled 'Visit Nexiris Consultants' that opens https://www.nexirisconsultants.com in a new tab. The page must use the existing Layout wrapper (Navigation + Footer).",
+      "reqIds": [
+        "REQ-47"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-our-legacy-route-is-correctly-registered-in-app-tsx-within-the-tanstack-router-configuration-as-a-child-route-of-the-layout-route-importing-ourlegacy-from-the-correct-path-verify-no-typescript-or-import-errors-exist-in-app-tsx",
+      "title": "Ensure the /our-legacy route is correctly registered in App.tsx within the TanStack Router configuration as a child route of the Layout route, importing OurLegacy from the correct path. Verify no TypeScript or import errors exist in App.tsx.",
+      "reqIds": [
+        "REQ-48"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-navigation-tsx-includes-an-our-legacy-navigation-link-alongside-home-and-pricing-navigating-to-our-legacy-via-the-client-side-router-with-the-same-active-hover-minty-blue-styling-as-other-nav-links-verify-navigation-tsx-compiles-without-errors",
+      "title": "Ensure Navigation.tsx includes an 'Our Legacy' navigation link alongside 'Home' and 'Pricing', navigating to /our-legacy via the client-side router with the same active/hover Minty Blue styling as other nav links. Verify Navigation.tsx compiles without errors.",
+      "reqIds": [
+        "REQ-49"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-all-company-name-references-across-the-entire-codebase-are-consistently-nexiris-global-not-nexiris-global-pvt-ltd-nexiris-consultants-llp-or-nexiris-consultants-this-includes-navigation-tsx-logo-alt-text-footer-tsx-company-name-and-disclaimer-frontend-index-html-title-tag-meta-description-og-title-og-description-og-site-name-twitter-card-tags-json-ld-structured-data-name-and-description-fields-and-all-in-component-text-in-herosection-tsx-pricingsection-tsx-faqsection-tsx-annualprogramsection-tsx-credibilitysection-tsx-finalctasection-tsx-inquirymodal-tsx-do-not-modify-immutable-files",
+      "title": "Ensure all company name references across the entire codebase are consistently 'Nexiris Global' — not 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants'. This includes Navigation.tsx logo alt text, Footer.tsx company name and disclaimer, frontend/index.html title tag, meta description, og:title, og:description, og:site_name, Twitter Card tags, JSON-LD structured data name and description fields, and all in-component text in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx. Do not modify immutable files.",
+      "reqIds": [
+        "REQ-50"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-audit-and-resolve-all-typescript-compilation-errors-across-the-frontend-specifically-1-ensure-howitworkssection-tsx-is-either-a-complete-valid-component-or-its-import-is-removed-from-home-tsx-it-must-not-be-imported-if-empty-or-broken-2-fix-any-broken-imports-in-navigation-tsx-footer-tsx-herosection-tsx-and-all-page-components-3-resolve-any-type-mismatches-in-usequeries-ts-and-inquirymodal-tsx-4-ensure-the-motoko-backend-actor-in-backend-main-mo-compiles-without-errors-the-entire-project-must-build-and-deploy-successfully",
+      "title": "Audit and resolve all TypeScript compilation errors across the frontend. Specifically: (1) ensure HowItWorksSection.tsx is either a complete, valid component or its import is removed from Home.tsx — it must not be imported if empty or broken; (2) fix any broken imports in Navigation.tsx, Footer.tsx, HeroSection.tsx, and all page components; (3) resolve any type mismatches in useQueries.ts and InquiryModal.tsx; (4) ensure the Motoko backend actor in backend/main.mo compiles without errors. The entire project must build and deploy successfully.",
+      "reqIds": [
+        "REQ-51"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-nexiris-logo-image-renders-correctly-in-both-navigation-tsx-navbar-left-side-and-footer-tsx-appropriately-smaller-size-the-img-src-must-point-to-assets-generated-nexiris-logo-png-verify-this-path-resolves-at-runtime-in-the-deployed-environment",
+      "title": "Ensure the Nexiris logo image renders correctly in both Navigation.tsx (navbar, left side) and Footer.tsx (appropriately smaller size). The <img> src must point to '/assets/generated/nexiris-logo.png'. Verify this path resolves at runtime in the deployed environment.",
+      "reqIds": [
+        "REQ-52"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -509,6 +621,30 @@
     {
       "id": "AR-45",
       "summary": "Replace static hero background image with a looping, muted, autoplay video of a ship sailing using Pexels video URL https://www.pexels.com/download/video/28647987/ — retain existing dark overlay for text readability",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-46",
+      "summary": "Make the hero section overlay fully transparent (remove tint/gradient) and left-align all hero content (headline, subheading, CTA buttons)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-47",
+      "summary": "Replace all company name variants everywhere with 'Nexiris Global' (simplified brand name, no 'Pvt Ltd') — navigation, footer, SEO meta tags, JSON-LD, all components",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-48",
+      "summary": "Remove hero stats row (15+ Years of Experience, 2400+ Verifications, 40+ Countries) from HeroSection.tsx",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-49",
+      "summary": "Add 'Our Legacy' page at route /our-legacy: brand heritage intro connecting Nexiris Global to Nexiris Consultants, prominent 'View Firm Profile' CTA opening PDF (https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf) in new tab, secondary link to nexirisconsultants.com in new tab. Add 'Our Legacy' nav link to main navigation bar alongside Home and Pricing.",
       "reqIds": [],
       "status": "pending"
     }

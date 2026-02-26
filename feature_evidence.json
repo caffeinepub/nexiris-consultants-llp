@@ -2,11 +2,66 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-all-instances-of-nexiris-consultants-llp-nexiris-consultants-and-any-other-variations-of-the-old-company-name-across-the-entire-codebase-with-nexiris-global-pvt-ltd-this-includes-the-navigation-tsx-wordmark-logo-alt-text-footer-tsx-company-name-and-disclaimer-text-frontend-index-html-title-tag-meta-description-open-graph-tags-og-title-og-description-og-site-name-twitter-card-tags-and-the-json-ld-organisation-structured-data-block-name-description-fields-also-update-any-in-component-text-references-in-herosection-tsx-pricingsection-tsx-faqsection-tsx-annualprogramsection-tsx-credibilitysection-tsx-finalctasection-tsx-inquirymodal-tsx-and-any-other-component-where-the-old-company-name-appears-do-not-modify-any-immutable-files",
-      "featureTitle": "Replace all instances of 'Nexiris Consultants LLP', 'Nexiris Consultants', and any other variations of the old company name across the entire codebase with 'Nexiris Global Pvt Ltd'. This includes: the Navigation.tsx wordmark/logo alt text, Footer.tsx company name and disclaimer text, frontend/index.html title tag, meta description, Open Graph tags (og:title, og:description, og:site_name), Twitter Card tags, and the JSON-LD Organisation structured data block (name, description fields). Also update any in-component text references in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx, and any other component where the old company name appears. Do not modify any immutable files.",
+      "featureId": "feature-ensure-the-ourlegacy-page-component-is-fully-and-correctly-defined-at-frontend-src-pages-ourlegacy-tsx-with-1-a-clean-brand-heritage-intro-section-connecting-nexiris-global-to-its-roots-via-nexiris-consultants-using-the-frost-white-minty-blue-palette-with-montserrat-headings-and-inter-body-copy-2-a-prominent-primary-cta-button-labelled-view-firm-profile-that-opens-https-www-nexirisconsultants-com-files-ugd-9b0883-a8ad90d67710468a9bdab66b562c8b7a-pdf-in-a-new-tab-3-a-secondary-link-button-labelled-visit-nexiris-consultants-that-opens-https-www-nexirisconsultants-com-in-a-new-tab-the-page-must-use-the-existing-layout-wrapper-navigation-footer",
+      "featureTitle": "Ensure the OurLegacy page component is fully and correctly defined at frontend/src/pages/OurLegacy.tsx with: (1) a clean brand heritage intro section connecting Nexiris Global to its roots via Nexiris Consultants, using the Frost White + Minty Blue palette with Montserrat headings and Inter body copy; (2) a prominent primary CTA button labelled 'View Firm Profile' that opens https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf in a new tab; (3) a secondary link/button labelled 'Visit Nexiris Consultants' that opens https://www.nexirisconsultants.com in a new tab. The page must use the existing Layout wrapper (Navigation + Footer).",
+      "files": [
+        "frontend/src/pages/OurLegacy.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-47"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-our-legacy-route-is-correctly-registered-in-app-tsx-within-the-tanstack-router-configuration-as-a-child-route-of-the-layout-route-importing-ourlegacy-from-the-correct-path-verify-no-typescript-or-import-errors-exist-in-app-tsx",
+      "featureTitle": "Ensure the /our-legacy route is correctly registered in App.tsx within the TanStack Router configuration as a child route of the Layout route, importing OurLegacy from the correct path. Verify no TypeScript or import errors exist in App.tsx.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-48"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-navigation-tsx-includes-an-our-legacy-navigation-link-alongside-home-and-pricing-navigating-to-our-legacy-via-the-client-side-router-with-the-same-active-hover-minty-blue-styling-as-other-nav-links-verify-navigation-tsx-compiles-without-errors",
+      "featureTitle": "Ensure Navigation.tsx includes an 'Our Legacy' navigation link alongside 'Home' and 'Pricing', navigating to /our-legacy via the client-side router with the same active/hover Minty Blue styling as other nav links. Verify Navigation.tsx compiles without errors.",
+      "files": [
+        "frontend/src/components/Navigation.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-49"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-all-company-name-references-across-the-entire-codebase-are-consistently-nexiris-global-not-nexiris-global-pvt-ltd-nexiris-consultants-llp-or-nexiris-consultants-this-includes-navigation-tsx-logo-alt-text-footer-tsx-company-name-and-disclaimer-frontend-index-html-title-tag-meta-description-og-title-og-description-og-site-name-twitter-card-tags-json-ld-structured-data-name-and-description-fields-and-all-in-component-text-in-herosection-tsx-pricingsection-tsx-faqsection-tsx-annualprogramsection-tsx-credibilitysection-tsx-finalctasection-tsx-inquirymodal-tsx-do-not-modify-immutable-files",
+      "featureTitle": "Ensure all company name references across the entire codebase are consistently 'Nexiris Global' — not 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants'. This includes Navigation.tsx logo alt text, Footer.tsx company name and disclaimer, frontend/index.html title tag, meta description, og:title, og:description, og:site_name, Twitter Card tags, JSON-LD structured data name and description fields, and all in-component text in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx. Do not modify immutable files.",
       "files": [
         "frontend/index.html",
         "frontend/src/components/Footer.tsx",
+        "frontend/src/components/InquiryModal.tsx",
         "frontend/src/components/Navigation.tsx",
         "frontend/src/components/annual/FAQSection.tsx",
         "frontend/src/components/home/HeroSection.tsx"
@@ -19,14 +74,17 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-37"
+        "REQ-50"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-in-herosection-tsx-replace-the-current-static-background-image-with-a-looping-muted-autoplay-html5-video-element-using-the-pexels-video-url-https-www-pexels-com-download-video-28647987-as-the-video-src-the-video-must-be-set-to-autoplay-muted-loop-and-playsinline-it-should-be-positioned-absolutely-to-fill-the-full-hero-section-object-fit-cover-width-100-height-100-retain-the-existing-dark-overlay-rgba-black-55-opacity-layered-on-top-of-the-video-for-text-readability-all-existing-hero-content-headline-subheading-cta-buttons-stats-row-must-remain-fully-visible-and-correctly-layered-above-the-overlay-remove-any-reference-to-the-static-hero-background-image-hero-trade-bg-jpg-from-herosection-tsx-the-parallax-scroll-effect-previously-applied-to-the-background-image-should-be-removed-or-adapted-to-work-with-the-video-element",
-      "featureTitle": "In HeroSection.tsx, replace the current static background image with a looping, muted, autoplay HTML5 <video> element using the Pexels video URL https://www.pexels.com/download/video/28647987/ as the video src. The video must be set to autoPlay, muted, loop, and playsInline. It should be positioned absolutely to fill the full Hero section (object-fit: cover, width: 100%, height: 100%). Retain the existing dark overlay (rgba black, ~55% opacity) layered on top of the video for text readability. All existing Hero content (headline, subheading, CTA buttons, stats row) must remain fully visible and correctly layered above the overlay. Remove any reference to the static hero background image (hero-trade-bg.jpg) from HeroSection.tsx. The parallax scroll effect previously applied to the background image should be removed or adapted to work with the video element.",
+      "featureId": "feature-audit-and-resolve-all-typescript-compilation-errors-across-the-frontend-specifically-1-ensure-howitworkssection-tsx-is-either-a-complete-valid-component-or-its-import-is-removed-from-home-tsx-it-must-not-be-imported-if-empty-or-broken-2-fix-any-broken-imports-in-navigation-tsx-footer-tsx-herosection-tsx-and-all-page-components-3-resolve-any-type-mismatches-in-usequeries-ts-and-inquirymodal-tsx-4-ensure-the-motoko-backend-actor-in-backend-main-mo-compiles-without-errors-the-entire-project-must-build-and-deploy-successfully",
+      "featureTitle": "Audit and resolve all TypeScript compilation errors across the frontend. Specifically: (1) ensure HowItWorksSection.tsx is either a complete, valid component or its import is removed from Home.tsx — it must not be imported if empty or broken; (2) fix any broken imports in Navigation.tsx, Footer.tsx, HeroSection.tsx, and all page components; (3) resolve any type mismatches in useQueries.ts and InquiryModal.tsx; (4) ensure the Motoko backend actor in backend/main.mo compiles without errors. The entire project must build and deploy successfully.",
       "files": [
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/InquiryModal.tsx",
+        "frontend/src/components/Navigation.tsx",
         "frontend/src/components/home/HeroSection.tsx"
       ],
       "components": [
@@ -37,7 +95,26 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-38"
+        "REQ-51"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-nexiris-logo-image-renders-correctly-in-both-navigation-tsx-navbar-left-side-and-footer-tsx-appropriately-smaller-size-the-img-src-must-point-to-assets-generated-nexiris-logo-png-verify-this-path-resolves-at-runtime-in-the-deployed-environment",
+      "featureTitle": "Ensure the Nexiris logo image renders correctly in both Navigation.tsx (navbar, left side) and Footer.tsx (appropriately smaller size). The <img> src must point to '/assets/generated/nexiris-logo.png'. Verify this path resolves at runtime in the deployed environment.",
+      "files": [
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Navigation.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-52"
       ],
       "confidence": "high"
     }

@@ -1,69 +1,146 @@
 {
   "kind": "build_request",
-  "title": "Rebrand to Nexiris Global Pvt Ltd + Hero Video Background",
+  "title": "Force rebuild and redeploy all latest changes (Our Legacy page, nav link, brand name, build fixes)",
   "projectName": "Nexiris Global",
-  "priority": "normal",
+  "priority": "high",
   "requirements": [
     {
-      "id": "REQ-37",
-      "text": "Replace all instances of 'Nexiris Consultants LLP', 'Nexiris Consultants', and any other variations of the old company name across the entire codebase with 'Nexiris Global Pvt Ltd'. This includes: the Navigation.tsx wordmark/logo alt text, Footer.tsx company name and disclaimer text, frontend/index.html title tag, meta description, Open Graph tags (og:title, og:description, og:site_name), Twitter Card tags, and the JSON-LD Organisation structured data block (name, description fields). Also update any in-component text references in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx, and any other component where the old company name appears. Do not modify any immutable files.",
+      "id": "REQ-47",
+      "text": "Ensure the OurLegacy page component is fully and correctly defined at frontend/src/pages/OurLegacy.tsx with: (1) a clean brand heritage intro section connecting Nexiris Global to its roots via Nexiris Consultants, using the Frost White + Minty Blue palette with Montserrat headings and Inter body copy; (2) a prominent primary CTA button labelled 'View Firm Profile' that opens https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf in a new tab; (3) a secondary link/button labelled 'Visit Nexiris Consultants' that opens https://www.nexirisconsultants.com in a new tab. The page must use the existing Layout wrapper (Navigation + Footer).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-rebrand"
+          "msg-1",
+          "msg-2",
+          "msg-3"
         ],
         "quotes": [
-          "Only Nexiris Global Pvt Ltd",
-          "this website is for Nexiris Global Pvt Ltd so clearly state that and everywhere where required and replace nexiris consultants written anywhere"
+          "the Our Legacy page, navigation link, Firm Profile CTA, brand name updates"
         ]
       },
       "acceptanceCriteria": [
-        "No instance of 'Nexiris Consultants LLP' or 'Nexiris Consultants' appears anywhere in the rendered site or source code (excluding immutable files)",
-        "Navigation wordmark/logo alt text reads 'Nexiris Global Pvt Ltd'",
-        "Footer company name reads 'Nexiris Global Pvt Ltd'",
-        "Footer disclaimer references 'Nexiris Global Pvt Ltd'",
-        "The <title> tag in index.html reads 'Nexiris Global Pvt Ltd | ...'",
-        "og:site_name and og:title in index.html reflect 'Nexiris Global Pvt Ltd'",
-        "JSON-LD structured data name field is 'Nexiris Global Pvt Ltd'",
-        "Twitter Card title reflects 'Nexiris Global Pvt Ltd'",
-        "All in-component text and headings that previously named the old entity now correctly display 'Nexiris Global Pvt Ltd'"
+        "Navigating to /our-legacy renders the OurLegacy page without errors",
+        "'View Firm Profile' button opens the PDF URL in a new tab",
+        "'Visit Nexiris Consultants' link opens https://www.nexirisconsultants.com in a new tab",
+        "Page uses Montserrat headings and Inter body copy",
+        "Page uses Frost White background and Minty Blue accents consistently"
       ]
     },
     {
-      "id": "REQ-38",
-      "text": "In HeroSection.tsx, replace the current static background image with a looping, muted, autoplay HTML5 <video> element using the Pexels video URL https://www.pexels.com/download/video/28647987/ as the video src. The video must be set to autoPlay, muted, loop, and playsInline. It should be positioned absolutely to fill the full Hero section (object-fit: cover, width: 100%, height: 100%). Retain the existing dark overlay (rgba black, ~55% opacity) layered on top of the video for text readability. All existing Hero content (headline, subheading, CTA buttons, stats row) must remain fully visible and correctly layered above the overlay. Remove any reference to the static hero background image (hero-trade-bg.jpg) from HeroSection.tsx. The parallax scroll effect previously applied to the background image should be removed or adapted to work with the video element.",
+      "id": "REQ-48",
+      "text": "Ensure the /our-legacy route is correctly registered in App.tsx within the TanStack Router configuration as a child route of the Layout route, importing OurLegacy from the correct path. Verify no TypeScript or import errors exist in App.tsx.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-video"
+          "msg-1",
+          "msg-2",
+          "msg-3"
         ],
         "quotes": [
-          "use this url https://www.pexels.com/download/video/28647987/",
-          "can u put a video in the background of a ship sailing"
+          "the Our Legacy page, navigation link, Firm Profile CTA, brand name updates"
         ]
       },
       "acceptanceCriteria": [
-        "The Hero section displays a looping, muted, autoplaying video background of a ship sailing",
-        "The video src is set to 'https://www.pexels.com/download/video/28647987/'",
-        "The video fills the full Hero section with object-fit cover",
-        "A dark semi-transparent overlay (~55% opacity) is rendered above the video for readability",
-        "All Hero text (headline, subheading) and CTA buttons are clearly readable above the overlay",
-        "The static hero-trade-bg.jpg background reference is removed from HeroSection.tsx",
-        "The video plays automatically on page load without requiring user interaction",
-        "No broken image references or missing background artifacts in the Hero section"
+        "App.tsx compiles without TypeScript errors",
+        "The /our-legacy route resolves to the OurLegacy page component",
+        "Existing routes (/, /annual-program) continue to function correctly"
+      ]
+    },
+    {
+      "id": "REQ-49",
+      "text": "Ensure Navigation.tsx includes an 'Our Legacy' navigation link alongside 'Home' and 'Pricing', navigating to /our-legacy via the client-side router with the same active/hover Minty Blue styling as other nav links. Verify Navigation.tsx compiles without errors.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2",
+          "msg-3"
+        ],
+        "quotes": [
+          "the Our Legacy page, navigation link, Firm Profile CTA, brand name updates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigation bar displays 'Home', 'Pricing', and 'Our Legacy' links",
+        "Clicking 'Our Legacy' navigates to /our-legacy",
+        "Active/hover state on 'Our Legacy' link uses Minty Blue accent",
+        "Navigation.tsx compiles without TypeScript errors"
+      ]
+    },
+    {
+      "id": "REQ-50",
+      "text": "Ensure all company name references across the entire codebase are consistently 'Nexiris Global' — not 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants'. This includes Navigation.tsx logo alt text, Footer.tsx company name and disclaimer, frontend/index.html title tag, meta description, og:title, og:description, og:site_name, Twitter Card tags, JSON-LD structured data name and description fields, and all in-component text in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx. Do not modify immutable files.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2",
+          "msg-3"
+        ],
+        "quotes": [
+          "brand name updates"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No occurrence of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' appears in any non-immutable file",
+        "All user-facing text and meta tags display 'Nexiris Global'",
+        "frontend/index.html title and meta tags reference 'Nexiris Global'"
+      ]
+    },
+    {
+      "id": "REQ-51",
+      "text": "Audit and resolve all TypeScript compilation errors across the frontend. Specifically: (1) ensure HowItWorksSection.tsx is either a complete, valid component or its import is removed from Home.tsx — it must not be imported if empty or broken; (2) fix any broken imports in Navigation.tsx, Footer.tsx, HeroSection.tsx, and all page components; (3) resolve any type mismatches in useQueries.ts and InquiryModal.tsx; (4) ensure the Motoko backend actor in backend/main.mo compiles without errors. The entire project must build and deploy successfully.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2",
+          "msg-3"
+        ],
+        "quotes": [
+          "still not able to see",
+          "rebuild and redeploy with all the latest changes cleanly applied"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend builds with zero TypeScript errors or warnings that block compilation",
+        "backend/main.mo compiles without errors",
+        "All page routes render correctly in the deployed application",
+        "No broken imports remain in any component file"
+      ]
+    },
+    {
+      "id": "REQ-52",
+      "text": "Ensure the Nexiris logo image renders correctly in both Navigation.tsx (navbar, left side) and Footer.tsx (appropriately smaller size). The <img> src must point to '/assets/generated/nexiris-logo.png'. Verify this path resolves at runtime in the deployed environment.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-2",
+          "msg-3"
+        ],
+        "quotes": [
+          "the Our Legacy page, navigation link, Firm Profile CTA, brand name updates, and everything else"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Logo is visible in the sticky navbar on the left side",
+        "Logo is visible in the footer at a smaller size",
+        "No broken image icon appears for the logo in either location",
+        "The src attribute value is '/assets/generated/nexiris-logo.png'"
       ]
     }
   ],
   "constraints": [
-    "Do not modify any immutable files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui/*",
-    "Do not add any parent company reference — only 'Nexiris Global Pvt Ltd' should appear, with no mention of 'a part of Nexiris Consultants'",
-    "Retain the existing dark overlay on the hero section for text readability when replacing the background with video"
+    "Do not modify any immutable files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui",
+    "All Motoko logic must remain in backend/main.mo single actor",
+    "Use TanStack Router for all client-side routing"
   ],
   "nonGoals": [
-    "Changing the site layout, colour palette, typography, or any other visual design elements beyond what is specified",
-    "Adding new sections or removing existing sections",
-    "Modifying the backend Motoko actor",
-    "Changing the contact email or physical address"
+    "Adding new product features or sections not already in the project state",
+    "Changing the existing Frost White + Minty Blue colour palette",
+    "Changing the Montserrat/Inter typography pairing",
+    "Modifying the backend data model or inquiry submission logic"
   ],
   "imageRequirements": {
     "required": [],

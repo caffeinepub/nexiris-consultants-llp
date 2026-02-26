@@ -8,7 +8,7 @@ import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 const faqs = [
   {
-    question: 'What is included in a Nexiris Global Pvt Ltd trade verification report?',
+    question: 'What is included in a Nexiris Global trade verification report?',
     answer:
       'Each report covers eight dimensions: entity verification (including MCA verification), compliance screening, document authentication, financial due diligence, trade route analysis, regulatory compliance review, Trade Trust Score™, and an executive summary report.',
   },
@@ -30,7 +30,7 @@ const faqs = [
   {
     question: 'Can I request a verification for any Indian exporter?',
     answer:
-      'Nexiris Global Pvt Ltd specialises in Indian exporter verification and counterparty risk intelligence for international buyers. We cover counterparties across India and can verify exporters in over 40 countries. Contact us to confirm availability for your specific trade route.',
+      'Nexiris Global specialises in Indian exporter verification and counterparty risk intelligence for international buyers. We cover counterparties across India and can verify exporters in over 40 countries. Contact us to confirm availability for your specific trade route.',
   },
   {
     question: 'What happens if I need more than 10 verifications under the Annual Program?',
@@ -53,7 +53,7 @@ export default function FAQSection() {
             Frequently Asked Questions
           </h2>
           <p className="text-brand-dark/60 text-base">
-            Everything you need to know about Nexiris Global Pvt Ltd verification services.
+            Everything you need to know about Nexiris Global verification services.
           </p>
         </div>
 
