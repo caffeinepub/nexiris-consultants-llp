@@ -16,6 +16,7 @@ export interface Inquiry {
 }
 export type Time = bigint;
 export interface backendInterface {
+    exportInquiriesCsv(): Promise<string>;
     getAllInquiries(): Promise<Array<Inquiry>>;
     submitInquiry(name: string, company: string, email: string, message: string): Promise<void>;
 }

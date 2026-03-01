@@ -18,6 +18,7 @@ export const Inquiry = IDL.Record({
 });
 
 export const idlService = IDL.Service({
+  'exportInquiriesCsv' : IDL.Func([], [IDL.Text], ['query']),
   'getAllInquiries' : IDL.Func([], [IDL.Vec(Inquiry)], ['query']),
   'submitInquiry' : IDL.Func([IDL.Text, IDL.Text, IDL.Text, IDL.Text], [], []),
 });
@@ -35,6 +36,7 @@ export const idlFactory = ({ IDL }) => {
   });
   
   return IDL.Service({
+    'exportInquiriesCsv' : IDL.Func([], [IDL.Text], ['query']),
     'getAllInquiries' : IDL.Func([], [IDL.Vec(Inquiry)], ['query']),
     'submitInquiry' : IDL.Func(
         [IDL.Text, IDL.Text, IDL.Text, IDL.Text],

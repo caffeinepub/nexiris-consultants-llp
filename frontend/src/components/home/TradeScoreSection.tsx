@@ -1,164 +1,100 @@
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
-const radarPoints = [
-  { label: 'Entity', angle: -90, score: 0.85 },
-  { label: 'Compliance', angle: -18, score: 0.72 },
-  { label: 'Documents', angle: 54, score: 0.91 },
-  { label: 'Financial', angle: 126, score: 0.68 },
-  { label: 'Route', angle: 198, score: 0.79 },
-];
-
-function polarToCartesian(cx: number, cy: number, r: number, angleDeg: number) {
-  const rad = (angleDeg * Math.PI) / 180;
-  return {
-    x: cx + r * Math.cos(rad),
-    y: cy + r * Math.sin(rad),
-  };
-}
-
-function RadarChart() {
-  const cx = 120;
-  const cy = 120;
-  const maxR = 90;
-  const levels = [0.25, 0.5, 0.75, 1.0];
-
-  const scorePoints = radarPoints.map((p) => {
-    const pt = polarToCartesian(cx, cy, maxR * p.score, p.angle);
-    return `${pt.x},${pt.y}`;
-  });
-
-  const gridPoints = (level: number) =>
-    radarPoints
-      .map((p) => {
-        const pt = polarToCartesian(cx, cy, maxR * level, p.angle);
-        return `${pt.x},${pt.y}`;
-      })
-      .join(' ');
-
-  return (
-    <svg viewBox="0 0 240 240" className="w-full max-w-[220px] mx-auto">
-      {/* Grid */}
-      {levels.map((level) => (
-        <polygon
-          key={level}
-          points={gridPoints(level)}
-          fill="none"
-          stroke="#3ECFB2"
-          strokeOpacity={0.15}
-          strokeWidth="1"
-        />
-      ))}
-      {/* Axes */}
-      {radarPoints.map((p) => {
-        const pt = polarToCartesian(cx, cy, maxR, p.angle);
-        return (
-          <line
-            key={p.label}
-            x1={cx}
-            y1={cy}
-            x2={pt.x}
-            y2={pt.y}
-            stroke="#3ECFB2"
-            strokeOpacity={0.2}
-            strokeWidth="1"
-          />
-        );
-      })}
-      {/* Score area */}
-      <polygon
-        points={scorePoints.join(' ')}
-        fill="#3ECFB2"
-        fillOpacity={0.15}
-        stroke="#3ECFB2"
-        strokeWidth="2"
-      />
-      {/* Score dots */}
-      {radarPoints.map((p) => {
-        const pt = polarToCartesian(cx, cy, maxR * p.score, p.angle);
-        return (
-          <circle key={p.label} cx={pt.x} cy={pt.y} r="4" fill="#3ECFB2" />
-        );
-      })}
-      {/* Labels */}
-      {radarPoints.map((p) => {
-        const pt = polarToCartesian(cx, cy, maxR + 18, p.angle);
-        return (
-          <text
-            key={p.label}
-            x={pt.x}
-            y={pt.y}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="9"
-            fill="#1A2332"
-            fontFamily="Inter, sans-serif"
-            fontWeight="500"
-          >
-            {p.label}
-          </text>
-        );
-      })}
-    </svg>
-  );
-}
-
-const dimensions = [
-  { label: 'Entity Verification', score: 85 },
-  { label: 'Compliance Screening', score: 72 },
-  { label: 'Document Authenticity', score: 91 },
-  { label: 'Financial Health', score: 68 },
-  { label: 'Route Risk', score: 79 },
+const scoreFactors = [
+  { label: 'Financial Stability', value: 88 },
+  { label: 'Regulatory Compliance', value: 94 },
+  { label: 'Trade History', value: 76 },
+  { label: 'Counterparty Network', value: 82 },
+  { label: 'Documentation Integrity', value: 91 },
 ];
 
 export default function TradeScoreSection() {
-  const { ref: sectionRef, isVisible } = useScrollAnimation();
+  const { ref: leftRef, isVisible: leftVisible } = useScrollAnimation();
+  const { ref: rightRef, isVisible: rightVisible } = useScrollAnimation();
 
   return (
-    <section id="trade-score" className="py-20 bg-brand-frostWhite">
-      <div className="max-w-5xl mx-auto px-6">
-        <div
-          ref={sectionRef}
-          className={`scroll-animate ${isVisible ? 'is-visible' : ''}`}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Left: Text */}
-            <div>
-              <h2 className="font-heading font-bold text-3xl md:text-4xl text-brand-dark mb-4">
-                Trade Trust Score™
-              </h2>
-              <p className="text-brand-dark/60 text-base leading-relaxed mb-6">
-                Our proprietary scoring model synthesises five verification dimensions into a
-                single, actionable risk indicator — giving you a clear picture of counterparty
-                trustworthiness before you commit.
-              </p>
-              <div className="space-y-3">
-                {dimensions.map((dim) => (
-                  <div key={dim.label}>
-                    <div className="flex justify-between items-center mb-1">
-                      <span className="text-brand-dark text-sm font-medium">{dim.label}</span>
-                      <span className="text-brand-mintyBlue text-sm font-semibold">{dim.score}</span>
+    <section className="py-24 bg-nexiris-dark relative overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-nexiris-navy/30 to-transparent pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left: Score display */}
+          <div
+            ref={leftRef}
+            className={`scroll-animate-left ${leftVisible ? 'visible' : ''}`}
+          >
+            <div className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-10 shadow-dark-lg">
+              <div className="text-center mb-8">
+                <div className="font-montserrat font-black text-8xl gradient-text leading-none mb-2">
+                  86
+                </div>
+                <div className="font-montserrat font-bold text-xl text-nexiris-lighter mb-1">
+                  Trade Trust Score™
+                </div>
+                <div className="text-nexiris-light text-sm">
+                  Sample Report — Acme Trading Co.
+                </div>
+              </div>
+
+              {/* Score factors */}
+              <div className="space-y-4">
+                {scoreFactors.map((factor) => (
+                  <div key={factor.label}>
+                    <div className="flex justify-between text-sm mb-1">
+                      <span className="text-nexiris-light font-inter">{factor.label}</span>
+                      <span className="text-gold-400 font-montserrat font-semibold">
+                        {factor.value}
+                      </span>
                     </div>
-                    <div className="h-1.5 bg-brand-frostGray rounded-full overflow-hidden">
+                    <div className="h-2 bg-nexiris-slate/40 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-brand-mintyBlue rounded-full transition-all duration-1000"
-                        style={{ width: `${dim.score}%` }}
+                        className="h-full rounded-full bg-gradient-to-r from-gold-600 to-gold-400 transition-all duration-1000"
+                        style={{ width: leftVisible ? `${factor.value}%` : '0%' }}
                       />
                     </div>
                   </div>
                 ))}
               </div>
             </div>
+          </div>
 
-            {/* Right: Chart */}
-            <div className="bg-white border border-brand-mintyBlue/15 rounded-lg p-8 shadow-card">
-              <div className="text-center mb-4">
-                <div className="font-heading font-bold text-5xl text-brand-mintyBlue">79</div>
-                <div className="text-brand-dark/50 text-sm mt-1">Composite Trust Score</div>
-              </div>
-              <RadarChart />
-              <p className="text-center text-brand-dark/40 text-xs mt-4">
-                Sample report — scores vary by counterparty
-              </p>
+          {/* Right: Description */}
+          <div
+            ref={rightRef}
+            className={`scroll-animate-right ${rightVisible ? 'visible' : ''}`}
+          >
+            <div className="inline-flex items-center gap-2 bg-nexiris-navy border border-gold-400/30 rounded-full px-4 py-2 mb-6">
+              <div className="w-2 h-2 rounded-full bg-gold-400" />
+              <span className="font-montserrat text-xs font-semibold text-gold-400 tracking-widest uppercase">
+                Proprietary Methodology
+              </span>
+            </div>
+
+            <h2 className="font-montserrat font-black text-4xl md:text-5xl text-nexiris-lighter mb-6 leading-tight">
+              The Trade Trust{' '}
+              <span className="gradient-text">Score™</span>
+            </h2>
+
+            <p className="text-nexiris-light text-lg leading-relaxed mb-6">
+              Our proprietary scoring model synthesizes financial data, regulatory records, trade history, and network analysis into a single, actionable intelligence score.
+            </p>
+
+            <p className="text-nexiris-light text-lg leading-relaxed mb-8">
+              Unlike generic credit scores, the Trade Trust Score™ is purpose-built for cross-border commerce — accounting for jurisdictional risk, documentation integrity, and counterparty network quality.
+            </p>
+
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                '50+ data sources',
+                'Real-time verification',
+                'Jurisdictional analysis',
+                'Network mapping',
+              ].map((item) => (
+                <div key={item} className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 rounded-full bg-gold-400 flex-shrink-0" />
+                  <span className="text-nexiris-light text-sm font-inter">{item}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

@@ -1,82 +1,59 @@
-import { useEffect, useState } from 'react';
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import { useCountUp } from '../../hooks/useCountUp';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useCountUp } from '@/hooks/useCountUp';
 
-const stats = [
-  { value: 15, suffix: '+', label: 'Years of Experience', isNumber: true },
-  { value: 2400, suffix: '+', label: 'Verifications Completed', isNumber: true },
-  { value: 100, suffix: '%', label: 'Independent & Unbiased', isNumber: true },
+const metrics = [
+  { end: 500, suffix: '+', label: 'Reports Delivered', description: 'Across 40+ countries and jurisdictions' },
+  { end: 98, suffix: '%', label: 'Client Retention', description: 'Industry-leading satisfaction rate' },
+  { end: 42, suffix: 'B+', label: 'USD Trade Value Screened', description: 'In cross-border transactions' },
 ];
 
-function StatItem({
-  value,
-  suffix,
-  label,
-  triggered,
-  delay,
-}: {
-  value: number;
-  suffix: string;
-  label: string;
-  triggered: boolean;
-  delay: string;
-}) {
-  const count = useCountUp({ end: value, duration: 1800, trigger: triggered });
+function MetricCard({ metric, trigger }: { metric: typeof metrics[0]; trigger: boolean }) {
+  const count = useCountUp({ end: metric.end, duration: 2000, trigger });
 
   return (
-    <div className={`scroll-animate ${delay} text-center`}>
-      <div className="font-heading font-bold text-4xl md:text-5xl text-brand-mintyBlue mb-2">
-        {count}{suffix}
+    <div className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-8 text-center shadow-dark-lg hover-float">
+      <div className="font-montserrat font-black text-5xl gradient-text mb-2">
+        {count}{metric.suffix}
       </div>
-      <div className="text-brand-dark/60 text-sm font-medium">{label}</div>
+      <div className="font-montserrat font-bold text-lg text-nexiris-lighter mb-2">
+        {metric.label}
+      </div>
+      <div className="text-nexiris-light text-sm">
+        {metric.description}
+      </div>
     </div>
   );
 }
 
 export default function CredibilitySection() {
   const { ref, isVisible } = useScrollAnimation();
-  const [triggered, setTriggered] = useState(false);
-
-  useEffect(() => {
-    if (isVisible && !triggered) {
-      setTriggered(true);
-    }
-  }, [isVisible, triggered]);
 
   return (
-    <section className="py-20 bg-brand-frostWhite">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="py-24 bg-nexiris-dark relative">
+      <div className="max-w-7xl mx-auto px-6">
         <div
           ref={ref}
-          className={`scroll-animate ${isVisible ? 'is-visible' : ''}`}
+          className={`text-center mb-16 scroll-animate ${isVisible ? 'visible' : ''}`}
         >
-          <div className="text-center mb-12">
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-brand-dark mb-4">
-              Trusted by Global Traders
-            </h2>
-            <p className="text-brand-dark/60 text-base max-w-xl mx-auto">
-              Over a decade of independent verification expertise, serving businesses across six continents.
-            </p>
-          </div>
+          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-nexiris-lighter mb-4">
+            Trusted by{' '}
+            <span className="gradient-text">Global Traders</span>
+          </h2>
+          <p className="text-nexiris-light text-lg max-w-2xl mx-auto">
+            Our track record speaks for itself — consistent, reliable intelligence for the world's most demanding trade environments.
+          </p>
+        </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 md:gap-16 max-w-3xl mx-auto">
-            {stats.map((stat, i) => (
-              <StatItem
-                key={stat.label}
-                value={stat.value}
-                suffix={stat.suffix}
-                label={stat.label}
-                triggered={triggered}
-                delay={`stagger-${i + 1}`}
-              />
-            ))}
-          </div>
-
-          <div className="mt-14 text-center">
-            <p className="text-brand-dark/40 text-sm italic max-w-lg mx-auto">
-              "Nexiris provides the independent verification layer that modern global trade demands."
-            </p>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {metrics.map((metric, i) => (
+            <div
+              key={metric.label}
+              className={`scroll-animate ${isVisible ? 'visible' : ''}`}
+              style={{ transitionDelay: `${i * 120}ms` }}
+            >
+              <MetricCard metric={metric} trigger={isVisible} />
+            </div>
+          ))}
         </div>
       </div>
     </section>

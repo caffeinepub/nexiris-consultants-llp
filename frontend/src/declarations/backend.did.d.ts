@@ -19,6 +19,7 @@ export interface Inquiry {
 }
 export type Time = bigint;
 export interface _SERVICE {
+  'exportInquiriesCsv' : ActorMethod<[], string>,
   'getAllInquiries' : ActorMethod<[], Array<Inquiry>>,
   'submitInquiry' : ActorMethod<[string, string, string, string], undefined>,
 }

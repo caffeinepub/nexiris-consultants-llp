@@ -1,186 +1,87 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Force rebuild and redeploy all latest changes (Our Legacy page, nav link, brand name, build fixes)",
+  "title": "Revert glassmorphism theme to previous version",
   "requirements": [
     {
-      "id": "REQ-47",
-      "summary": "Create and fully implement the OurLegacy page component with brand heritage intro, Firm Profile CTA, and Visit Nexiris Consultants link, using Layout wrapper and brand styling",
+      "id": "REQ-1",
+      "summary": "Revert all glassmorphism theme changes applied in version 14 across all frontend files, restoring the UI to its prior state before the glassmorphism theme was applied site-wide",
       "acceptanceCriteria": [
-        "Navigating to /our-legacy renders the OurLegacy page without errors",
-        "'View Firm Profile' button opens the PDF URL in a new tab",
-        "'Visit Nexiris Consultants' link opens https://www.nexirisconsultants.com in a new tab",
-        "Page uses Montserrat headings and Inter body copy",
-        "Page uses Frost White background and Minty Blue accents consistently"
+        "All frontend files that were modified to apply the glassmorphism theme are restored to their pre-glassmorphism state.",
+        "The site visually matches the version prior to the glassmorphism update.",
+        "No glassmorphism-specific utility classes or styles introduced in the latest update remain active across components.",
+        "All pages (Home, Annual Program, Our Legacy) render correctly without glassmorphism overrides from the reverted changes."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/OurLegacy.tsx",
-          "operation": "create",
-          "description": "Create the OurLegacy page component with: (1) a brand heritage intro section connecting Nexiris Global to Nexiris Consultants using Frost White background and Minty Blue accents with Montserrat headings and Inter body text; (2) a primary button labeled 'View Firm Profile' that opens https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf in a new tab via target='_blank' and rel='noopener noreferrer'; (3) a secondary link/button labeled 'Visit Nexiris Consultants' that opens https://www.nexirisconsultants.com in a new tab. The component must be a default export and use semantic HTML with proper accessibility attributes."
-        }
-      ]
-    },
-    {
-      "id": "REQ-48",
-      "summary": "Register the /our-legacy route in App.tsx within TanStack Router configuration as a child of Layout route, ensuring correct imports and no TypeScript errors",
-      "acceptanceCriteria": [
-        "App.tsx compiles without TypeScript errors",
-        "The /our-legacy route resolves to the OurLegacy page component",
-        "Existing routes (/, /annual-program) continue to function correctly"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Add the /our-legacy route to the TanStack Router configuration as a child of the Layout route. Import OurLegacy from './pages/OurLegacy' and register it using createRoute with path: '/our-legacy' and component: OurLegacy, ensuring it is added to the routeTree alongside the existing Home and AnnualProgram routes. Verify no TypeScript import or type errors are introduced."
-        }
-      ]
-    },
-    {
-      "id": "REQ-49",
-      "summary": "Add 'Our Legacy' navigation link to Navigation.tsx alongside existing nav links with consistent Minty Blue active/hover styling and client-side routing",
-      "acceptanceCriteria": [
-        "Navigation bar displays 'Home', 'Pricing', and 'Our Legacy' links",
-        "Clicking 'Our Legacy' navigates to /our-legacy",
-        "Active/hover state on 'Our Legacy' link uses Minty Blue accent",
-        "Navigation.tsx compiles without TypeScript errors"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "modify",
-          "description": "Add an 'Our Legacy' navigation link in the nav menu (both desktop and mobile versions) alongside 'Home' and 'Pricing'. Use TanStack Router's Link component to navigate to '/our-legacy' with the same active/hover Minty Blue styling applied to other nav links. Ensure the link uses client-side routing and compiles without TypeScript errors."
-        }
-      ]
-    },
-    {
-      "id": "REQ-50",
-      "summary": "Update all company name references across the codebase to consistently use 'Nexiris Global' in all frontend components, HTML meta tags, and structured data",
-      "acceptanceCriteria": [
-        "No occurrence of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' appears in any non-immutable file",
-        "All user-facing text and meta tags display 'Nexiris Global'",
-        "frontend/index.html title and meta tags reference 'Nexiris Global'"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/index.html",
-          "operation": "modify",
-          "description": "Update all company name references to 'Nexiris Global' in the title tag, meta description, og:title, og:description, og:site_name, Twitter Card tags, and JSON-LD structured data (name and description fields). Replace any occurrences of 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants' with 'Nexiris Global'."
+          "description": "Remove glassmorphism-specific CSS custom properties and utility classes introduced in version 14. Restore the pre-glassmorphism global stylesheet with original color tokens and base styles, removing glass-card, glass-border, glass-glow, and related glassmorphism utilities."
         },
         {
-          "path": "frontend/src/components/Navigation.tsx",
+          "path": "frontend/tailwind.config.js",
           "operation": "modify",
-          "description": "Update the logo alt text to reference 'Nexiris Global' instead of any other company name variant. Ensure no references to 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' remain in this component."
+          "description": "Remove glassmorphism theme extensions added in version 14 including glass color tokens, backdrop blur scales, and glassmorphism-specific box shadows. Restore the previous Tailwind configuration with original theme settings."
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Update all company name references in the footer text, copyright notice, and disclaimer to 'Nexiris Global'. Replace any occurrences of 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants' with 'Nexiris Global'."
+          "description": "Remove glassmorphism background styling and glass effects from the footer component. Restore the previous footer design with original background treatment and styling that existed before version 14."
         },
         {
           "path": "frontend/src/components/home/HeroSection.tsx",
           "operation": "modify",
-          "description": "Update all in-component text referencing the company name to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
+          "description": "Remove glassmorphism styling from hero stat cards and any glass effects applied to the hero section. Restore the previous hero section design with original card styling."
         },
         {
-          "path": "frontend/src/components/annual/PricingSection.tsx",
+          "path": "frontend/src/components/home/ProblemSection.tsx",
           "operation": "modify",
-          "description": "Update all company name references in pricing card text and descriptions to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
+          "description": "Remove glass-styled card treatments from the three risk cards. Restore the previous card styling without glassmorphism effects."
         },
         {
-          "path": "frontend/src/components/annual/FAQSection.tsx",
+          "path": "frontend/src/components/home/TradeScoreSection.tsx",
           "operation": "modify",
-          "description": "Update all company name references in FAQ answers to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
+          "description": "Remove glassmorphism effects from the Trade Trust Score section. Restore the previous styling for the progress bars and radar chart visualization area."
+        },
+        {
+          "path": "frontend/src/components/home/WhatWeDeliverSection.tsx",
+          "operation": "modify",
+          "description": "Remove glassmorphism styling from deliverable cards. Restore the previous card design for the eight deliverable items."
+        },
+        {
+          "path": "frontend/src/components/home/HowItWorksSection.tsx",
+          "operation": "modify",
+          "description": "Remove glassmorphism effects from the four-step process cards. Restore the previous card styling for the Submit, Research, Score, and Report steps."
         },
         {
           "path": "frontend/src/components/home/AnnualProgramSection.tsx",
           "operation": "modify",
-          "description": "Update all company name references in section text to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
+          "description": "Remove glassmorphism styling from pricing plan cards. Restore the previous design for Single Report and Annual Program cards."
         },
         {
           "path": "frontend/src/components/home/CredibilitySection.tsx",
           "operation": "modify",
-          "description": "Update all company name references in stats section text to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
+          "description": "Remove glassmorphism effects from stats metric cards. Restore the previous styling for the three key metrics display."
         },
         {
           "path": "frontend/src/components/home/FinalCTASection.tsx",
           "operation": "modify",
-          "description": "Update all company name references in CTA section text to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
+          "description": "Remove glassmorphism card styling from the final call-to-action section. Restore the previous CTA card design."
         },
         {
-          "path": "frontend/src/components/InquiryModal.tsx",
+          "path": "frontend/src/components/annual/PricingSection.tsx",
           "operation": "modify",
-          "description": "Update all company name references in modal text and form labels to 'Nexiris Global'. Replace any occurrences of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' with 'Nexiris Global'."
-        }
-      ]
-    },
-    {
-      "id": "REQ-51",
-      "summary": "Audit and resolve all TypeScript compilation errors across the frontend, fixing broken imports, ensuring HowItWorksSection.tsx is valid or removed, and resolving type mismatches",
-      "acceptanceCriteria": [
-        "Frontend builds with zero TypeScript errors or warnings that block compilation",
-        "backend/main.mo compiles without errors",
-        "All page routes render correctly in the deployed application",
-        "No broken imports remain in any component file"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/home/HowItWorksSection.tsx",
-          "operation": "modify",
-          "description": "Ensure HowItWorksSection.tsx is a complete, valid component that renders a 4-step 'How It Works' process with scroll animations. If the component is empty or broken, make it a valid functional component with proper TypeScript types. Verify it exports a default function component and uses correct prop types if any are passed from Home.tsx."
+          "description": "Remove glassmorphism styling from annual program pricing cards. Restore the previous design for the pricing section."
         },
         {
-          "path": "frontend/src/pages/Home.tsx",
+          "path": "frontend/src/components/annual/FAQSection.tsx",
           "operation": "modify",
-          "description": "Verify the import of HowItWorksSection is correct and the component is properly integrated in the Home page composition. If HowItWorksSection was empty or broken, ensure it is now imported and rendered correctly. Fix any broken import paths or type errors related to this or other section components."
+          "description": "Remove any glassmorphism effects applied to the FAQ accordion section. Restore the previous accordion styling."
         },
         {
-          "path": "frontend/src/components/Navigation.tsx",
+          "path": "frontend/src/pages/OurLegacy.tsx",
           "operation": "modify",
-          "description": "Audit and fix any broken imports or TypeScript type errors in Navigation.tsx. Ensure all imported modules (e.g., TanStack Router Link, useModal hook) resolve correctly and all component props have proper types."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Audit and fix any broken imports or TypeScript type errors in Footer.tsx. Ensure all imported modules resolve correctly and all component code compiles without errors."
-        },
-        {
-          "path": "frontend/src/components/home/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Audit and fix any broken imports or TypeScript type errors in HeroSection.tsx. Ensure all component code compiles without errors and prop types are correctly defined."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Resolve any type mismatches in useQueries.ts, ensuring the useSubmitInquiry mutation hook correctly types the form data parameters and backend actor method call. Verify the mutation function signature matches the expected backend interface."
-        },
-        {
-          "path": "frontend/src/components/InquiryModal.tsx",
-          "operation": "modify",
-          "description": "Resolve any type mismatches in InquiryModal.tsx, ensuring form state types, validation logic, and the useSubmitInquiry hook invocation all have correct TypeScript types. Fix any errors related to modal state or form submission."
-        }
-      ]
-    },
-    {
-      "id": "REQ-52",
-      "summary": "Ensure the Nexiris logo image renders correctly in Navigation.tsx and Footer.tsx using the path '/assets/generated/nexiris-logo.png'",
-      "acceptanceCriteria": [
-        "Logo is visible in the sticky navbar on the left side",
-        "Logo is visible in the footer at a smaller size",
-        "No broken image icon appears for the logo in either location",
-        "The src attribute value is '/assets/generated/nexiris-logo.png'"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/Navigation.tsx",
-          "operation": "modify",
-          "description": "Update the logo <img> src attribute to '/assets/generated/nexiris-logo.png' and ensure the alt text is set to 'Nexiris Global'. Verify the logo renders on the left side of the navbar with appropriate width and height attributes for optimal display."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Update the logo <img> src attribute to '/assets/generated/nexiris-logo.png' and ensure the alt text is set to 'Nexiris Global'. Set the logo to display at a smaller size appropriate for the footer (e.g., via CSS class or inline height/width), ensuring it renders correctly without a broken image icon."
+          "description": "Remove glassmorphism styling from core pillars cards and any glass effects on the legacy page. Restore the previous design for Independence, Transparency, Global Reach, and Precision sections."
         }
       ]
     }

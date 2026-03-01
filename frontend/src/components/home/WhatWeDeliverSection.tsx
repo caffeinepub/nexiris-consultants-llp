@@ -1,85 +1,52 @@
-import { useScrollAnimation } from '../../hooks/useScrollAnimation';
-import { Check } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { CheckCircle } from 'lucide-react';
 
 const deliverables = [
-  {
-    title: 'Entity Verification',
-    description: 'Comprehensive MCA verification of counterparty legal status, ownership, and registration in India.',
-  },
-  {
-    title: 'Compliance Screening',
-    description: 'Sanctions, PEP, and watchlist screening against global and Indian regulatory databases.',
-  },
-  {
-    title: 'Document Authentication',
-    description: 'Validation of trade documents including invoices, bills of lading, and export certificates.',
-  },
-  {
-    title: 'Financial Due Diligence',
-    description: 'Assessment of counterparty financial health and creditworthiness indicators for informed sourcing decisions.',
-  },
-  {
-    title: 'Trade Route Analysis',
-    description: 'Mapping and risk assessment of supply chain routes, transit jurisdictions, and logistics partners.',
-  },
-  {
-    title: 'Regulatory Compliance Review',
-    description: 'Review of applicable Indian export regulations, tariffs, and import/export requirements for your trade route.',
-  },
-  {
-    title: 'Trade Trust Score™',
-    description: 'Proprietary composite risk score synthesising all verification dimensions into a single actionable metric.',
-  },
-  {
-    title: 'Executive Summary Report',
-    description: 'Clear, actionable findings from our OSINT trade research presented in a structured professional report.',
-  },
+  'Comprehensive counterparty background report',
+  'Trade Trust Score™ with factor breakdown',
+  'Regulatory & sanctions screening',
+  'Financial health assessment',
+  'Trade history & pattern analysis',
+  'Counterparty network mapping',
+  'Documentation integrity review',
+  'Executive summary with recommendations',
 ];
 
 export default function WhatWeDeliverSection() {
-  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
-  const { ref: listRef, isVisible: listVisible } = useScrollAnimation();
+  const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section id="what-we-deliver" className="py-20 bg-white" aria-labelledby="deliver-heading">
-      <div className="max-w-5xl mx-auto px-6">
+    <section className="py-24 bg-nexiris-darker relative">
+      <div className="max-w-7xl mx-auto px-6">
         <div
-          ref={titleRef}
-          className={`scroll-animate text-center mb-12 ${titleVisible ? 'is-visible' : ''}`}
+          ref={ref}
+          className={`scroll-animate ${isVisible ? 'visible' : ''}`}
         >
-          <h2 id="deliver-heading" className="font-heading font-bold text-3xl md:text-4xl text-brand-dark mb-4">
-            What We Deliver
-          </h2>
-          <p className="text-brand-dark/60 text-base max-w-xl mx-auto">
-            Every Nexiris Indian exporter verification report covers eight critical dimensions of
-            supplier due diligence, delivered within 3–5 business days.
-          </p>
-        </div>
-
-        <div
-          ref={listRef}
-          className={`scroll-animate ${listVisible ? 'is-visible' : ''}`}
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5">
-            {deliverables.map((item) => (
-              <div key={item.title} className="flex items-start gap-3">
-                <div className="mt-0.5 shrink-0 w-5 h-5 rounded-full bg-brand-frostGray flex items-center justify-center">
-                  <Check size={12} className="text-brand-mintyBlue" strokeWidth={3} />
-                </div>
-                <div>
-                  <span className="font-semibold text-brand-dark text-sm">{item.title}</span>
-                  <p className="text-brand-dark/55 text-sm mt-0.5 leading-relaxed">{item.description}</p>
-                </div>
-              </div>
-            ))}
+          <div className="text-center mb-16">
+            <h2 className="font-montserrat font-black text-4xl md:text-5xl text-nexiris-lighter mb-4">
+              What We{' '}
+              <span className="gradient-text">Deliver</span>
+            </h2>
+            <p className="text-nexiris-light text-lg max-w-2xl mx-auto">
+              Every Trade Trust Score™ report includes a comprehensive intelligence package designed for decision-makers.
+            </p>
           </div>
 
-          <div className="mt-10 pt-8 border-t border-brand-mintyBlue/15 text-center">
-            <p className="text-brand-dark/50 text-sm">
-              Delivery within{' '}
-              <span className="font-semibold text-brand-mintyBlue">3–5 business days</span>
-              {' '}· Available for single transactions or annual subscription
-            </p>
+          <div className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-10 shadow-dark-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {deliverables.map((item, i) => (
+                <div
+                  key={item}
+                  className={`flex items-start gap-4 p-4 bg-nexiris-dark/60 border border-nexiris-slate/30 rounded-xl scroll-animate ${isVisible ? 'visible' : ''}`}
+                  style={{ transitionDelay: `${i * 80}ms` }}
+                >
+                  <CheckCircle className="w-5 h-5 text-gold-400 flex-shrink-0 mt-0.5" />
+                  <span className="text-nexiris-lighter text-sm font-inter leading-relaxed">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

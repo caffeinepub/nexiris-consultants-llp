@@ -1,104 +1,50 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-26T18:41:15.342Z",
+  "generatedAt": "2026-03-01T23:01:46.548Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 6,
-    "implemented": 6,
+    "total": 1,
+    "implemented": 1,
     "items": [
       {
-        "id": "REQ-47",
-        "summary": "Ensure the OurLegacy page component is fully and correctly defined at frontend/src/pages/OurLegacy.tsx with: (1) a clean brand heritage intro section connecting Nexiris Global to its roots via Nexiris Consultants, using the Frost White + Minty Blue palette with Montserrat headings and Inter body copy; (2) a prominent primary CTA button labelled 'View Firm Profile' that opens https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf in a new tab; (3) a secondary link/button labelled 'Visit Nexiris Consultants' that opens https://www.nexirisconsultants.com in a new tab. The page must use the existing Layout wrapper (Navigation + Footer).",
+        "id": "REQ-1",
+        "summary": "Revert all glassmorphism theme changes applied in the most recent update (version 14) across all frontend files, restoring the UI to its prior state before the glassmorphism theme was applied site-wide.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/OurLegacy.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/OurLegacy.tsx"
-        ]
-      },
-      {
-        "id": "REQ-48",
-        "summary": "Ensure the /our-legacy route is correctly registered in App.tsx within the TanStack Router configuration as a child route of the Layout route, importing OurLegacy from the correct path. Verify no TypeScript or import errors exist in App.tsx.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/App.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/App.tsx"
-        ]
-      },
-      {
-        "id": "REQ-49",
-        "summary": "Ensure Navigation.tsx includes an 'Our Legacy' navigation link alongside 'Home' and 'Pricing', navigating to /our-legacy via the client-side router with the same active/hover Minty Blue styling as other nav links. Verify Navigation.tsx compiles without errors.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/Navigation.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/Navigation.tsx"
-        ]
-      },
-      {
-        "id": "REQ-50",
-        "summary": "Ensure all company name references across the entire codebase are consistently 'Nexiris Global' — not 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants'. This includes Navigation.tsx logo alt text, Footer.tsx company name and disclaimer, frontend/index.html title tag, meta description, og:title, og:description, og:site_name, Twitter Card tags, JSON-LD structured data name and description fields, and all in-component text in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx. Do not modify immutable files.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/index.html",
-          "frontend/src/components/Navigation.tsx",
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
           "frontend/src/components/Footer.tsx",
           "frontend/src/components/home/HeroSection.tsx",
-          "frontend/src/components/annual/PricingSection.tsx",
-          "frontend/src/components/annual/FAQSection.tsx",
+          "frontend/src/components/home/ProblemSection.tsx",
+          "frontend/src/components/home/TradeScoreSection.tsx",
+          "frontend/src/components/home/WhatWeDeliverSection.tsx",
+          "frontend/src/components/home/HowItWorksSection.tsx",
           "frontend/src/components/home/AnnualProgramSection.tsx",
           "frontend/src/components/home/CredibilitySection.tsx",
           "frontend/src/components/home/FinalCTASection.tsx",
-          "frontend/src/components/InquiryModal.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/index.html",
-          "frontend/src/components/Navigation.tsx",
-          "frontend/src/components/Footer.tsx",
-          "frontend/src/components/home/HeroSection.tsx",
+          "frontend/src/components/annual/PricingSection.tsx",
           "frontend/src/components/annual/FAQSection.tsx",
-          "frontend/src/components/InquiryModal.tsx"
-        ]
-      },
-      {
-        "id": "REQ-51",
-        "summary": "Audit and resolve all TypeScript compilation errors across the frontend. Specifically: (1) ensure HowItWorksSection.tsx is either a complete, valid component or its import is removed from Home.tsx — it must not be imported if empty or broken; (2) fix any broken imports in Navigation.tsx, Footer.tsx, HeroSection.tsx, and all page components; (3) resolve any type mismatches in useQueries.ts and InquiryModal.tsx; (4) ensure the Motoko backend actor in backend/main.mo compiles without errors. The entire project must build and deploy successfully.",
-        "status": "implemented",
-        "plannedFiles": [
+          "frontend/src/pages/OurLegacy.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/components/home/HeroSection.tsx",
+          "frontend/src/components/home/ProblemSection.tsx",
+          "frontend/src/components/home/TradeScoreSection.tsx",
+          "frontend/src/components/home/WhatWeDeliverSection.tsx",
           "frontend/src/components/home/HowItWorksSection.tsx",
-          "frontend/src/pages/Home.tsx",
-          "frontend/src/components/Navigation.tsx",
-          "frontend/src/components/Footer.tsx",
-          "frontend/src/components/home/HeroSection.tsx",
-          "frontend/src/hooks/useQueries.ts",
-          "frontend/src/components/InquiryModal.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/Navigation.tsx",
-          "frontend/src/components/Footer.tsx",
-          "frontend/src/components/home/HeroSection.tsx",
-          "frontend/src/components/InquiryModal.tsx"
-        ]
-      },
-      {
-        "id": "REQ-52",
-        "summary": "Ensure the Nexiris logo image renders correctly in both Navigation.tsx (navbar, left side) and Footer.tsx (appropriately smaller size). The <img> src must point to '/assets/generated/nexiris-logo.png'. Verify this path resolves at runtime in the deployed environment.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/Navigation.tsx",
-          "frontend/src/components/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/Navigation.tsx",
-          "frontend/src/components/Footer.tsx"
+          "frontend/src/components/home/AnnualProgramSection.tsx",
+          "frontend/src/components/home/CredibilitySection.tsx",
+          "frontend/src/components/home/FinalCTASection.tsx",
+          "frontend/src/components/annual/PricingSection.tsx",
+          "frontend/src/components/annual/FAQSection.tsx",
+          "frontend/src/pages/OurLegacy.tsx"
         ]
       }
     ]
@@ -108,14 +54,21 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/index.html",
-    "frontend/src/App.tsx",
     "frontend/src/components/Footer.tsx",
-    "frontend/src/components/InquiryModal.tsx",
-    "frontend/src/components/Navigation.tsx",
     "frontend/src/components/annual/FAQSection.tsx",
+    "frontend/src/components/annual/PricingSection.tsx",
+    "frontend/src/components/home/AnnualProgramSection.tsx",
+    "frontend/src/components/home/CredibilitySection.tsx",
+    "frontend/src/components/home/FinalCTASection.tsx",
     "frontend/src/components/home/HeroSection.tsx",
+    "frontend/src/components/home/HowItWorksSection.tsx",
+    "frontend/src/components/home/ProblemSection.tsx",
+    "frontend/src/components/home/TradeScoreSection.tsx",
+    "frontend/src/components/home/WhatWeDeliverSection.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/Home.tsx",
     "frontend/src/pages/OurLegacy.tsx",
+    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -1,146 +1,36 @@
 {
   "kind": "build_request",
-  "title": "Force rebuild and redeploy all latest changes (Our Legacy page, nav link, brand name, build fixes)",
+  "title": "Revert glassmorphism theme to previous version",
   "projectName": "Nexiris Global",
-  "priority": "high",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-47",
-      "text": "Ensure the OurLegacy page component is fully and correctly defined at frontend/src/pages/OurLegacy.tsx with: (1) a clean brand heritage intro section connecting Nexiris Global to its roots via Nexiris Consultants, using the Frost White + Minty Blue palette with Montserrat headings and Inter body copy; (2) a prominent primary CTA button labelled 'View Firm Profile' that opens https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf in a new tab; (3) a secondary link/button labelled 'Visit Nexiris Consultants' that opens https://www.nexirisconsultants.com in a new tab. The page must use the existing Layout wrapper (Navigation + Footer).",
+      "id": "REQ-1",
+      "text": "Revert all glassmorphism theme changes applied in the most recent update (version 14) across all frontend files, restoring the UI to its prior state before the glassmorphism theme was applied site-wide.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3"
+          "msg-4"
         ],
         "quotes": [
-          "the Our Legacy page, navigation link, Firm Profile CTA, brand name updates"
+          "nah revert back lol"
         ]
       },
       "acceptanceCriteria": [
-        "Navigating to /our-legacy renders the OurLegacy page without errors",
-        "'View Firm Profile' button opens the PDF URL in a new tab",
-        "'Visit Nexiris Consultants' link opens https://www.nexirisconsultants.com in a new tab",
-        "Page uses Montserrat headings and Inter body copy",
-        "Page uses Frost White background and Minty Blue accents consistently"
-      ]
-    },
-    {
-      "id": "REQ-48",
-      "text": "Ensure the /our-legacy route is correctly registered in App.tsx within the TanStack Router configuration as a child route of the Layout route, importing OurLegacy from the correct path. Verify no TypeScript or import errors exist in App.tsx.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3"
-        ],
-        "quotes": [
-          "the Our Legacy page, navigation link, Firm Profile CTA, brand name updates"
-        ]
-      },
-      "acceptanceCriteria": [
-        "App.tsx compiles without TypeScript errors",
-        "The /our-legacy route resolves to the OurLegacy page component",
-        "Existing routes (/, /annual-program) continue to function correctly"
-      ]
-    },
-    {
-      "id": "REQ-49",
-      "text": "Ensure Navigation.tsx includes an 'Our Legacy' navigation link alongside 'Home' and 'Pricing', navigating to /our-legacy via the client-side router with the same active/hover Minty Blue styling as other nav links. Verify Navigation.tsx compiles without errors.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3"
-        ],
-        "quotes": [
-          "the Our Legacy page, navigation link, Firm Profile CTA, brand name updates"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Navigation bar displays 'Home', 'Pricing', and 'Our Legacy' links",
-        "Clicking 'Our Legacy' navigates to /our-legacy",
-        "Active/hover state on 'Our Legacy' link uses Minty Blue accent",
-        "Navigation.tsx compiles without TypeScript errors"
-      ]
-    },
-    {
-      "id": "REQ-50",
-      "text": "Ensure all company name references across the entire codebase are consistently 'Nexiris Global' — not 'Nexiris Global Pvt Ltd', 'Nexiris Consultants LLP', or 'Nexiris Consultants'. This includes Navigation.tsx logo alt text, Footer.tsx company name and disclaimer, frontend/index.html title tag, meta description, og:title, og:description, og:site_name, Twitter Card tags, JSON-LD structured data name and description fields, and all in-component text in HeroSection.tsx, PricingSection.tsx, FAQSection.tsx, AnnualProgramSection.tsx, CredibilitySection.tsx, FinalCTASection.tsx, InquiryModal.tsx. Do not modify immutable files.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3"
-        ],
-        "quotes": [
-          "brand name updates"
-        ]
-      },
-      "acceptanceCriteria": [
-        "No occurrence of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' appears in any non-immutable file",
-        "All user-facing text and meta tags display 'Nexiris Global'",
-        "frontend/index.html title and meta tags reference 'Nexiris Global'"
-      ]
-    },
-    {
-      "id": "REQ-51",
-      "text": "Audit and resolve all TypeScript compilation errors across the frontend. Specifically: (1) ensure HowItWorksSection.tsx is either a complete, valid component or its import is removed from Home.tsx — it must not be imported if empty or broken; (2) fix any broken imports in Navigation.tsx, Footer.tsx, HeroSection.tsx, and all page components; (3) resolve any type mismatches in useQueries.ts and InquiryModal.tsx; (4) ensure the Motoko backend actor in backend/main.mo compiles without errors. The entire project must build and deploy successfully.",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3"
-        ],
-        "quotes": [
-          "still not able to see",
-          "rebuild and redeploy with all the latest changes cleanly applied"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Frontend builds with zero TypeScript errors or warnings that block compilation",
-        "backend/main.mo compiles without errors",
-        "All page routes render correctly in the deployed application",
-        "No broken imports remain in any component file"
-      ]
-    },
-    {
-      "id": "REQ-52",
-      "text": "Ensure the Nexiris logo image renders correctly in both Navigation.tsx (navbar, left side) and Footer.tsx (appropriately smaller size). The <img> src must point to '/assets/generated/nexiris-logo.png'. Verify this path resolves at runtime in the deployed environment.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3"
-        ],
-        "quotes": [
-          "the Our Legacy page, navigation link, Firm Profile CTA, brand name updates, and everything else"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Logo is visible in the sticky navbar on the left side",
-        "Logo is visible in the footer at a smaller size",
-        "No broken image icon appears for the logo in either location",
-        "The src attribute value is '/assets/generated/nexiris-logo.png'"
+        "All frontend files that were modified to apply the glassmorphism theme are restored to their pre-glassmorphism state.",
+        "The site visually matches the version prior to the glassmorphism update.",
+        "No glassmorphism-specific utility classes or styles introduced in the latest update remain active across components.",
+        "All pages (Home, Annual Program, Our Legacy) render correctly without glassmorphism overrides from the reverted changes."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any immutable files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui",
-    "All Motoko logic must remain in backend/main.mo single actor",
-    "Use TanStack Router for all client-side routing"
+    "Do not change backend logic or data models.",
+    "Do not modify immutable frontend paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui."
   ],
   "nonGoals": [
-    "Adding new product features or sections not already in the project state",
-    "Changing the existing Frost White + Minty Blue colour palette",
-    "Changing the Montserrat/Inter typography pairing",
-    "Modifying the backend data model or inquiry submission logic"
+    "Introducing any new design changes or features.",
+    "Removing the glassmorphism CSS tokens from the design system if they were pre-existing before version 14."
   ],
   "imageRequirements": {
     "required": [],

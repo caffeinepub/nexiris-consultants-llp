@@ -1,126 +1,91 @@
-import { useEffect, useRef, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { useScrollAnimation } from '@/hooks/useScrollAnimation';
 
 interface HeroSectionProps {
   onEnquire: () => void;
 }
 
 export default function HeroSection({ onEnquire }: HeroSectionProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const heroRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const scrollToNext = () => {
-    const next = document.getElementById('problem');
-    next?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation();
 
   return (
-    <section
-      ref={heroRef}
-      className="relative min-h-screen flex items-center overflow-hidden"
-      aria-label="Hero — Indian Exporter Verification & Counterparty Risk Intelligence"
-    >
-      {/* Video Background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src="https://www.pexels.com/download/video/28647987/"
-        autoPlay
-        muted
-        loop
-        playsInline
-        aria-hidden="true"
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background image */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: "url('/assets/generated/hero-trade-bg.dim_1920x1080.jpg')" }}
       />
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-nexiris-dark/75" />
+      {/* Gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-nexiris-dark/30 via-transparent to-nexiris-dark/80" />
 
-      {/* Transparent Overlay — no tint */}
-      <div className="absolute inset-0 bg-transparent" />
-
-      {/* Content — left-aligned */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16">
-        <div className="max-w-2xl">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+        <div
+          ref={heroRef}
+          className={`scroll-animate ${heroVisible ? 'visible' : ''}`}
+        >
           {/* Badge */}
-          <div
-            className={`inline-flex items-center gap-2 bg-brand-mintyBlue/20 border border-brand-mintyBlue/40 text-brand-mintyLight text-xs font-semibold uppercase tracking-widest px-4 py-2 rounded-full mb-8 transition-all duration-700 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-mintyBlue inline-block"></span>
-            Independent Trade Verification · India
+          <div className="inline-flex items-center gap-2 bg-nexiris-navy border border-gold-400/30 rounded-full px-4 py-2 mb-8">
+            <div className="w-2 h-2 rounded-full bg-gold-400 animate-pulse" />
+            <span className="font-montserrat text-xs font-600 text-gold-400 tracking-widest uppercase">
+              Independent Trade Intelligence
+            </span>
           </div>
 
           {/* Headline */}
-          <h1
-            className={`font-heading font-bold text-4xl md:text-6xl lg:text-7xl text-white leading-tight mb-6 text-left transition-all duration-700 delay-100 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Trade Intelligence
-            <br />
-            <span className="text-brand-mintyBlue">You Can Trust</span>
+          <h1 className="font-montserrat font-black text-5xl md:text-7xl leading-tight mb-6 text-nexiris-lighter">
+            Know Who You're{' '}
+            <span className="gradient-text">Trading With</span>
           </h1>
 
-          {/* Subheading */}
-          <p
-            className={`text-white/75 text-lg md:text-xl mb-10 leading-relaxed text-left transition-all duration-700 delay-200 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
-            Nexiris Global delivers rigorous Indian exporter verification, counterparty risk intelligence,
-            and supplier due diligence — empowering international buyers to trade with confidence.
+          <p className="text-nexiris-light text-xl md:text-2xl max-w-3xl mx-auto mb-12 leading-relaxed">
+            Nexiris Global delivers independent verification and trust scoring for international trade partners — before you commit capital.
           </p>
 
           {/* CTAs */}
-          <div
-            className={`flex flex-col sm:flex-row gap-4 justify-start mb-16 transition-all duration-700 delay-300 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <button
               onClick={onEnquire}
-              className="bg-brand-mintyBlue text-white font-semibold px-8 py-3.5 rounded-md hover:bg-brand-mintyDark transition-all shadow-minty hover-lift"
+              className="glass-btn-primary px-8 py-4 text-base rounded-xl font-montserrat font-bold"
             >
-              Request a Verification Report
+              Request a Trade Trust Score™
             </button>
-            <button
-              onClick={() => document.getElementById('what-we-deliver')?.scrollIntoView({ behavior: 'smooth' })}
-              className="border border-white/40 text-white font-semibold px-8 py-3.5 rounded-md hover:bg-white/10 transition-all"
+            <a
+              href="#how-it-works"
+              className="glass-btn px-8 py-4 text-base rounded-xl font-montserrat font-semibold"
             >
-              Explore Services
-            </button>
+              See How It Works
+            </a>
           </div>
 
-          {/* Stats Row */}
-          <div
-            className={`flex gap-10 transition-all duration-700 delay-400 ${
-              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-            }`}
-          >
+          {/* Stats */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-3xl mx-auto">
             {[
-              { value: '15+', label: 'Years Experience' },
-              { value: '2,400+', label: 'Verifications' },
-              { value: '40+', label: 'Countries' },
+              { value: '500+', label: 'Reports Delivered' },
+              { value: '40+', label: 'Countries Covered' },
+              { value: '98%', label: 'Client Retention' },
             ].map((stat) => (
-              <div key={stat.label} className="text-left">
-                <div className="font-heading font-bold text-2xl text-brand-mintyBlue">{stat.value}</div>
-                <div className="text-white/60 text-xs mt-1">{stat.label}</div>
+              <div
+                key={stat.label}
+                className="bg-nexiris-navy/80 border border-nexiris-slate/50 rounded-xl px-6 py-4"
+              >
+                <div className="font-montserrat font-black text-3xl gradient-text mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-nexiris-light text-sm font-inter">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <button
-        onClick={scrollToNext}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 hover:text-brand-mintyBlue transition-colors animate-bounce"
-        aria-label="Scroll down"
-      >
-        <ChevronDown size={28} />
-      </button>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-nexiris-muted">
+        <span className="text-xs font-inter tracking-widest uppercase">Scroll</span>
+        <div className="w-px h-8 bg-gradient-to-b from-nexiris-muted to-transparent" />
+      </div>
     </section>
   );
 }

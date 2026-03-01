@@ -36,21 +36,24 @@ const queryClient = new QueryClient({
 function Layout() {
   const [modalOpen, setModalOpen] = useState(false);
 
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
   return (
     <ModalContext.Provider
       value={{
-        openModal: () => setModalOpen(true),
-        closeModal: () => setModalOpen(false),
+        openModal,
+        closeModal,
         isModalOpen: modalOpen,
       }}
     >
       <div className="min-h-screen flex flex-col bg-background font-sans">
-        <Navigation />
+        <Navigation onEnquire={openModal} />
         <div className="flex-1">
           <Outlet />
         </div>
         <Footer />
-        <InquiryModal />
+        <InquiryModal isOpen={modalOpen} onClose={closeModal} />
       </div>
     </ModalContext.Provider>
   );
@@ -77,7 +80,11 @@ const ourLegacyRoute = createRoute({
   component: OurLegacy,
 });
 
-const routeTree = rootRoute.addChildren([homeRoute, annualProgramRoute, ourLegacyRoute]);
+const routeTree = rootRoute.addChildren([
+  homeRoute,
+  annualProgramRoute,
+  ourLegacyRoute,
+]);
 
 const router = createRouter({ routeTree });
 

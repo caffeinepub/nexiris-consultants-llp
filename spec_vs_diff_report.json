@@ -1,55 +1,28 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-26T18:41:15.335Z",
-  "summary": "The diff implements the majority of requested requirements: OurLegacy.tsx is created with the correct CTAs and styling, the /our-legacy route is registered in App.tsx, Navigation.tsx includes the 'Our Legacy' link, brand name is consistently 'Nexiris Global' in index.html and components, logo src is '/assets/generated/nexiris-logo.png' in both Navigation and Footer, and FAQSection/InquiryModal/HeroSection references are updated. However, some requirements have partial or unverifiable coverage, and REQ-49 has a notable gap: the navigation does not include a dedicated 'Home' link. REQ-51 regarding HowItWorksSection.tsx resolution and backend/main.mo compilation cannot be confirmed from the diff.",
-  "missing_requirements": [
-    {
-      "id": "REQ-49",
-      "requirement": "Navigation bar must display 'Home', 'Pricing', and 'Our Legacy' links",
-      "reason": "The Navigation.tsx diff shows 'Services', 'Trade Score', 'Pricing' (as /annual-program), and 'Our Legacy' links but no explicit 'Home' link. The requirement specifies Home, Pricing, and Our Legacy as named nav links.",
-      "evidence": [
-        "frontend/src/components/Navigation.tsx"
-      ]
-    },
-    {
-      "id": "REQ-51",
-      "requirement": "Ensure HowItWorksSection.tsx is either a complete valid component or its import is removed from Home.tsx; backend/main.mo compiles without errors",
-      "reason": "The diff does not show any changes to HowItWorksSection.tsx or explicit removal of its import in Home.tsx. backend/main.mo is not present in the diff at all, so its compilation status cannot be verified.",
-      "evidence": [
-        "frontend/src/pages/Home.tsx",
-        "frontend-file-summaries.txt"
-      ]
-    },
-    {
-      "id": "REQ-50",
-      "requirement": "No occurrence of 'Nexiris Consultants LLP', 'Nexiris Consultants', or 'Nexiris Global Pvt Ltd' in any non-immutable file",
-      "reason": "OurLegacy.tsx intentionally references 'Nexiris Consultants' as the legacy firm name in body copy. While contextually intentional, the acceptance criterion literally states no occurrence of 'Nexiris Consultants' in non-immutable files.",
-      "evidence": [
-        "frontend/src/pages/OurLegacy.tsx"
-      ]
-    }
-  ],
-  "hallucinated_features": [
-    {
-      "description": "Footer includes an 'Our Legacy' link in the services column",
-      "reason": "No requirement specified adding an Our Legacy link to the Footer services column. This was added in Footer.tsx beyond what was requested.",
-      "evidence": [
-        "frontend/src/components/Footer.tsx"
-      ]
-    }
-  ],
-  "confidence": 0.78,
+  "generatedAt": "2026-03-01T23:01:46.545Z",
+  "summary": "The diff shows 17 modified frontend files. The changes appear to revert glassmorphism site-wide card/section styling back to solid nexiris-navy bordered cards, while retaining glassmorphism only in Navigation and InquiryModal (glass-nav, glass-panel, glass-btn utilities). The index.css retains glass utilities scoped to nav/modal. All three pages (Home, Annual Program, Our Legacy) are present and use solid card styling. The revert appears largely complete per the acceptance criteria, with no new design features introduced.",
+  "missing_requirements": [],
+  "hallucinated_features": [],
+  "confidence": 0.82,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/index.html",
-    "frontend/src/App.tsx",
     "frontend/src/components/Footer.tsx",
-    "frontend/src/components/InquiryModal.tsx",
-    "frontend/src/components/Navigation.tsx",
     "frontend/src/components/annual/FAQSection.tsx",
+    "frontend/src/components/annual/PricingSection.tsx",
+    "frontend/src/components/home/AnnualProgramSection.tsx",
+    "frontend/src/components/home/CredibilitySection.tsx",
+    "frontend/src/components/home/FinalCTASection.tsx",
     "frontend/src/components/home/HeroSection.tsx",
+    "frontend/src/components/home/HowItWorksSection.tsx",
+    "frontend/src/components/home/ProblemSection.tsx",
+    "frontend/src/components/home/TradeScoreSection.tsx",
+    "frontend/src/components/home/WhatWeDeliverSection.tsx",
+    "frontend/src/index.css",
+    "frontend/src/pages/Home.tsx",
     "frontend/src/pages/OurLegacy.tsx",
+    "frontend/tailwind.config.js",
     "project_state.json"
   ]
 }
