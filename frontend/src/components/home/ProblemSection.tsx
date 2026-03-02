@@ -1,75 +1,83 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { AlertTriangle, TrendingDown, Globe } from 'lucide-react';
+import { AlertTriangle, Globe, FileX } from 'lucide-react';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
 
 const risks = [
   {
     icon: AlertTriangle,
-    tag: 'Fraud Risk',
-    title: 'Unverified Counterparties',
+    title: 'Counterparty Risk',
     description:
-      "Fraudulent trade partners cost global businesses over $42 billion annually. Without independent verification, you're relying on self-reported credentials.",
-  },
-  {
-    icon: TrendingDown,
-    tag: 'Financial Exposure',
-    title: 'Capital at Risk',
-    description:
-      'Letters of credit, advance payments, and open account terms expose your capital to counterparties whose financial health you cannot independently assess.',
+      'Unverified Indian exporters and trading partners expose your business to fraud, non-delivery, and financial loss. Independent counterparty risk assessment is essential before committing to cross-border transactions.',
   },
   {
     icon: Globe,
-    tag: 'Compliance',
-    title: 'Regulatory Blind Spots',
+    title: 'Regulatory Exposure',
     description:
-      "Sanctions violations, AML exposure, and regulatory non-compliance can result from trading with parties you haven't properly screened.",
+      'Evolving international trade regulations and India-specific compliance requirements create gaps that can result in penalties, delays, and reputational damage for importers worldwide.',
+  },
+  {
+    icon: FileX,
+    title: 'Documentation Failures',
+    description:
+      'Inaccurate or fraudulent trade documents from unverified suppliers undermine deal integrity and create costly disputes at customs and settlement — a risk that thorough trade due diligence eliminates.',
   },
 ];
 
-export default function ProblemSection() {
+function RiskCard({
+  icon: Icon,
+  title,
+  description,
+  delay,
+}: {
+  icon: React.ElementType;
+  title: string;
+  description: string;
+  delay: string;
+}) {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="py-24 bg-nexiris-darker relative">
-      <div className="absolute inset-0 bg-gradient-to-b from-nexiris-dark/50 to-transparent pointer-events-none" />
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+    <div
+      ref={ref}
+      className={`scroll-animate ${delay} ${isVisible ? 'is-visible' : ''} hover-float`}
+    >
+      <div className="bg-white border border-brand-mintyBlue/15 rounded-lg p-6 h-full shadow-card hover:shadow-card-hover transition-shadow">
+        <div className="w-10 h-10 rounded-md bg-brand-frostGray flex items-center justify-center mb-4">
+          <Icon size={20} className="text-brand-mintyBlue" />
+        </div>
+        <h3 className="font-heading font-semibold text-brand-dark text-lg mb-3">{title}</h3>
+        <p className="text-brand-dark/60 text-sm leading-relaxed">{description}</p>
+      </div>
+    </div>
+  );
+}
+
+export default function ProblemSection() {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+
+  return (
+    <section id="problem" className="py-20 bg-brand-frostWhite" aria-labelledby="problem-heading">
+      <div className="max-w-5xl mx-auto px-6">
         <div
-          ref={ref}
-          className={`text-center mb-16 scroll-animate ${isVisible ? 'visible' : ''}`}
+          ref={titleRef}
+          className={`scroll-animate text-center mb-12 ${titleVisible ? 'is-visible' : ''}`}
         >
-          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-nexiris-lighter mb-4">
-            The Risk You Cannot Afford to Ignore
+          <h2 id="problem-heading" className="font-heading font-bold text-3xl md:text-4xl text-brand-dark mb-4">
+            The Risks of Unverified Trade
           </h2>
-          <p className="text-nexiris-light text-lg max-w-2xl mx-auto">
-            International trade is built on trust — but trust without verification is just hope.
+          <p className="text-brand-dark/60 text-base max-w-xl mx-auto">
+            Import risk management starts with knowing who you're dealing with. Without independent
+            supplier verification, businesses operate blind in complex, high-stakes environments.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {risks.map((risk, i) => {
-            const Icon = risk.icon;
-            return (
-              <div
-                key={risk.tag}
-                className={`scroll-animate ${isVisible ? 'visible' : ''} hover-float`}
-                style={{ transitionDelay: `${i * 120}ms` }}
-              >
-                <div className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-8 h-full shadow-dark-lg">
-                  <div className="w-12 h-12 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center mb-6">
-                    <Icon className="w-6 h-6 text-gold-400" />
-                  </div>
-                  <span className="inline-block text-xs font-montserrat font-semibold text-gold-400 tracking-widest uppercase bg-gold-400/10 rounded-full px-3 py-1 mb-4">
-                    {risk.tag}
-                  </span>
-                  <h3 className="font-montserrat font-bold text-xl text-nexiris-lighter mb-3">
-                    {risk.title}
-                  </h3>
-                  <p className="text-nexiris-light text-sm leading-relaxed">
-                    {risk.description}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {risks.map((risk, i) => (
+            <RiskCard
+              key={risk.title}
+              {...risk}
+              delay={`stagger-${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>

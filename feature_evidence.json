@@ -2,23 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-revert-all-glassmorphism-theme-changes-applied-in-the-most-recent-update-version-14-across-all-frontend-files-restoring-the-ui-to-its-prior-state-before-the-glassmorphism-theme-was-applied-site-wide",
-      "featureTitle": "Revert all glassmorphism theme changes applied in the most recent update (version 14) across all frontend files, restoring the UI to its prior state before the glassmorphism theme was applied site-wide.",
+      "featureId": "feature-replace-all-existing-body-text-in-the-ourlegacy-page-frontend-src-pages-ourlegacy-tsx-with-the-following-content-preserving-the-existing-page-layout-and-scroll-animations-our-legacy-nexiris-global-represents-the-evolution-of-a-trusted-trade-intelligence-and-professional-advisory-platform-our-roots-trace-back-to-nexiris-consultants-a-specialist-firm-that-built-deep-expertise-in-exporter-verification-counterparty-risk-assessment-governance-review-and-structured-trade-due-diligence-over-more-than-two-decades-the-firm-established-a-reputation-for-rigorous-independent-analysis-enabling-international-buyers-to-navigate-sourcing-environments-with-clarity-and-confidence-through-years-of-structured-engagements-across-industries-and-jurisdictions-nexiris-refined-proprietary-methodologies-and-analytical-frameworks-designed-to-bring-discipline-and-transparency-to-cross-border-trade-decisions-the-development-of-the-trade-trust-score-reflects-this-structured-evolution-transforming-qualitative-verification-into-measurable-decision-support-intelligence-today-nexiris-global-carries-that-foundation-forward-as-a-broader-professional-services-platform-expanding-geographic-reach-strengthening-multidisciplinary-capability-and-integrating-advanced-analytical-systems-to-deliver-institutional-grade-risk-intelligence-our-commitment-remains-constant-to-provide-international-buyers-and-procurement-teams-with-structured-clarity-evidence-based-assessment-and-strategic-insight-enabling-informed-trade-decisions-grounded-in-verified-information-the-name-iris-represents-clarity-of-vision-and-disciplined-perspective-in-optics-the-iris-regulates-light-to-bring-focus-and-definition-at-nexiris-this-principle-guides-our-approach-illuminating-complexity-structuring-uncertainty-and-delivering-focused-insight-where-risk-must-be-understood-our-legacy-stands-for-independence-precision-institutional-rigor-and-the-confidence-that-comes-from-structured-expertise-built-over-time",
+      "featureTitle": "Replace all existing body text in the OurLegacy page (frontend/src/pages/OurLegacy.tsx) with the following content, preserving the existing page layout and scroll animations:\n\n**Our Legacy**\n\nNexiris Global represents the evolution of a trusted trade intelligence and professional advisory platform.\n\nOur roots trace back to Nexiris Consultants — a specialist firm that built deep expertise in exporter verification, counterparty risk assessment, governance review, and structured trade due diligence. Over more than two decades, the firm established a reputation for rigorous, independent analysis — enabling international buyers to navigate sourcing environments with clarity and confidence.\n\nThrough years of structured engagements across industries and jurisdictions, Nexiris refined proprietary methodologies and analytical frameworks designed to bring discipline and transparency to cross-border trade decisions. The development of the Trade Trust Score™ reflects this structured evolution — transforming qualitative verification into measurable, decision-support intelligence.\n\nToday, Nexiris Global carries that foundation forward as a broader professional services platform — expanding geographic reach, strengthening multidisciplinary capability, and integrating advanced analytical systems to deliver institutional-grade risk intelligence.\n\nOur commitment remains constant: to provide international buyers and procurement teams with structured clarity, evidence-based assessment, and strategic insight — enabling informed trade decisions grounded in verified information.\n\nThe name Iris represents clarity of vision and disciplined perspective. In optics, the iris regulates light to bring focus and definition. At Nexiris, this principle guides our approach — illuminating complexity, structuring uncertainty, and delivering focused insight where risk must be understood.\n\nOur legacy stands for independence, precision, institutional rigor, and the confidence that comes from structured expertise built over time.",
       "files": [
-        "frontend/src/components/Footer.tsx",
-        "frontend/src/components/annual/FAQSection.tsx",
-        "frontend/src/components/annual/PricingSection.tsx",
-        "frontend/src/components/home/AnnualProgramSection.tsx",
-        "frontend/src/components/home/CredibilitySection.tsx",
-        "frontend/src/components/home/FinalCTASection.tsx",
-        "frontend/src/components/home/HeroSection.tsx",
-        "frontend/src/components/home/HowItWorksSection.tsx",
-        "frontend/src/components/home/ProblemSection.tsx",
-        "frontend/src/components/home/TradeScoreSection.tsx",
-        "frontend/src/components/home/WhatWeDeliverSection.tsx",
-        "frontend/src/index.css",
-        "frontend/src/pages/OurLegacy.tsx",
-        "frontend/tailwind.config.js"
+        "frontend/src/pages/OurLegacy.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -29,6 +16,26 @@
       ],
       "testIds": [
         "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-the-enquiries-section-entirely-from-the-application-this-includes-removing-any-dedicated-enquiries-section-component-or-block-rendered-on-any-page-removing-the-enquiries-route-and-page-frontend-src-pages-exportinquiries-tsx-from-the-router-in-frontend-src-app-tsx-and-removing-any-navigation-links-pointing-to-the-enquiries-page-the-inquirymodal-and-its-trigger-buttons-e-g-in-ctas-and-pricing-cards-should-remain-unaffected",
+      "featureTitle": "Remove the Enquiries section entirely from the application. This includes: removing any dedicated 'Enquiries' section component or block rendered on any page, removing the Enquiries route and page (frontend/src/pages/ExportInquiries.tsx) from the router in frontend/src/App.tsx, and removing any navigation links pointing to the Enquiries page. The InquiryModal and its trigger buttons (e.g., in CTAs and pricing cards) should remain unaffected.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Navigation.tsx",
+        "frontend/src/pages/ExportInquiries.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
       ],
       "confidence": "high"
     }

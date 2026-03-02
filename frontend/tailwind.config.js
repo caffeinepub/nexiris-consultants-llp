@@ -1,114 +1,92 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ['class'],
+  darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     extend: {
       fontFamily: {
-        montserrat: ['Montserrat', 'sans-serif'],
-        inter: ['Inter', 'sans-serif'],
+        heading: ['Montserrat', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        serif: ['Montserrat', 'sans-serif'],
       },
       colors: {
-        border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        background: 'hsl(var(--background))',
-        foreground: 'hsl(var(--foreground))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
+        brand: {
+          mintyBlue: '#3ECFB2',
+          mintyLight: '#7DDFD0',
+          mintyDark: '#2BA898',
+          frostWhite: '#F8FFFE',
+          frostGray: '#EEF9F7',
+          dark: '#1A2332',
+          darkMid: '#243040',
         },
-        secondary: {
-          DEFAULT: 'hsl(var(--secondary))',
-          foreground: 'hsl(var(--secondary-foreground))',
-        },
-        destructive: {
-          DEFAULT: 'hsl(var(--destructive))',
-          foreground: 'hsl(var(--destructive-foreground))',
-        },
-        muted: {
-          DEFAULT: 'hsl(var(--muted))',
-          foreground: 'hsl(var(--muted-foreground))',
-        },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
+        background: 'oklch(var(--background) / <alpha-value>)',
+        foreground: 'oklch(var(--foreground) / <alpha-value>)',
+        card: {
+          DEFAULT: 'oklch(var(--card) / <alpha-value>)',
+          foreground: 'oklch(var(--card-foreground) / <alpha-value>)',
         },
         popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
+          DEFAULT: 'oklch(var(--popover) / <alpha-value>)',
+          foreground: 'oklch(var(--popover-foreground) / <alpha-value>)',
         },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
+        primary: {
+          DEFAULT: 'oklch(var(--primary) / <alpha-value>)',
+          foreground: 'oklch(var(--primary-foreground) / <alpha-value>)',
         },
-        gold: {
-          50:  'oklch(0.97 0.04 75)',
-          100: 'oklch(0.93 0.07 75)',
-          200: 'oklch(0.88 0.10 75)',
-          300: 'oklch(0.83 0.12 75)',
-          400: 'oklch(0.78 0.12 75)',
-          500: 'oklch(0.72 0.11 70)',
-          600: 'oklch(0.65 0.10 68)',
-          700: 'oklch(0.55 0.09 65)',
-          800: 'oklch(0.42 0.07 65)',
-          900: 'oklch(0.30 0.05 65)',
+        secondary: {
+          DEFAULT: 'oklch(var(--secondary) / <alpha-value>)',
+          foreground: 'oklch(var(--secondary-foreground) / <alpha-value>)',
         },
-        nexiris: {
-          dark:    'oklch(0.10 0.02 260)',
-          darker:  'oklch(0.08 0.015 260)',
-          navy:    'oklch(0.14 0.03 260)',
-          slate:   'oklch(0.20 0.03 260)',
-          muted:   'oklch(0.30 0.03 260)',
-          light:   'oklch(0.70 0.02 260)',
-          lighter: 'oklch(0.85 0.01 260)',
+        muted: {
+          DEFAULT: 'oklch(var(--muted) / <alpha-value>)',
+          foreground: 'oklch(var(--muted-foreground) / <alpha-value>)',
+        },
+        accent: {
+          DEFAULT: 'oklch(var(--accent) / <alpha-value>)',
+          foreground: 'oklch(var(--accent-foreground) / <alpha-value>)',
+        },
+        destructive: {
+          DEFAULT: 'oklch(var(--destructive) / <alpha-value>)',
+          foreground: 'oklch(var(--destructive-foreground) / <alpha-value>)',
+        },
+        border: 'oklch(var(--border) / <alpha-value>)',
+        input: 'oklch(var(--input) / <alpha-value>)',
+        ring: 'oklch(var(--ring) / <alpha-value>)',
+        chart: {
+          '1': 'oklch(var(--chart-1) / <alpha-value>)',
+          '2': 'oklch(var(--chart-2) / <alpha-value>)',
+          '3': 'oklch(var(--chart-3) / <alpha-value>)',
+          '4': 'oklch(var(--chart-4) / <alpha-value>)',
+          '5': 'oklch(var(--chart-5) / <alpha-value>)',
         },
       },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)',
-        xl: '12px',
-        '2xl': '16px',
-        '3xl': '24px',
       },
       boxShadow: {
-        'gold-glow': '0 0 24px oklch(0.78 0.12 75 / 0.3)',
-        'gold-glow-lg': '0 0 48px oklch(0.78 0.12 75 / 0.25)',
-        'dark-lg': '0 8px 32px oklch(0.05 0.01 260 / 0.6)',
-        'card': '0 2px 12px oklch(0.05 0.01 260 / 0.4)',
-      },
-      backdropBlur: {
-        xs: '2px',
-        sm: '4px',
-        md: '8px',
-        lg: '16px',
-        xl: '24px',
-        '2xl': '40px',
+        'card': '0 2px 12px oklch(0.18 0.02 220 / 0.08)',
+        'card-hover': '0 8px 32px oklch(0.18 0.02 220 / 0.14)',
+        'minty': '0 4px 20px oklch(0.72 0.14 175 / 0.25)',
+        'minty-lg': '0 8px 40px oklch(0.72 0.14 175 / 0.3)',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-8px)' },
+        'accordion-down': {
+          from: { height: '0' },
+          to: { height: 'var(--radix-accordion-content-height)' },
         },
-        'pulse-gold': {
-          '0%, 100%': { boxShadow: '0 0 12px oklch(0.78 0.12 75 / 0.3)' },
-          '50%': { boxShadow: '0 0 28px oklch(0.78 0.12 75 / 0.6)' },
-        },
-        shimmer: {
-          '0%': { backgroundPosition: '-200% center' },
-          '100%': { backgroundPosition: '200% center' },
+        'accordion-up': {
+          from: { height: 'var(--radix-accordion-content-height)' },
+          to: { height: '0' },
         },
       },
       animation: {
-        float: 'float 4s ease-in-out infinite',
-        'pulse-gold': 'pulse-gold 2s ease-in-out infinite',
-        shimmer: 'shimmer 3s linear infinite',
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
       },
     },
   },
@@ -116,4 +94,4 @@ export default {
     require('tailwindcss-animate'),
     require('@tailwindcss/typography'),
   ],
-};
+}

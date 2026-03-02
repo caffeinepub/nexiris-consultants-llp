@@ -1,198 +1,189 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { useModal } from '@/App';
-import { Shield, Eye, Globe, Target } from 'lucide-react';
+import { ExternalLink, FileText, Globe } from 'lucide-react';
+import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-const pillars = [
-  {
-    icon: Shield,
-    title: 'Independence',
-    description:
-      'We have no financial relationships with the entities we assess. Our analysts operate under strict conflict-of-interest policies, ensuring every score reflects objective intelligence — not commercial incentives.',
-  },
-  {
-    icon: Eye,
-    title: 'Transparency',
-    description:
-      'Every Trade Trust Score comes with a full factor breakdown. You see exactly what drove the score, which data sources were consulted, and where uncertainty exists. No black boxes.',
-  },
-  {
-    icon: Globe,
-    title: 'Global Reach',
-    description:
-      'With coverage across 40+ countries and partnerships with regional intelligence networks, we provide consistent, reliable assessments regardless of jurisdiction or trade corridor.',
-  },
-  {
-    icon: Target,
-    title: 'Precision',
-    description:
-      'Our methodology is purpose-built for trade intelligence — not adapted from consumer credit models. Every data point, weighting, and algorithm is calibrated for cross-border commercial risk.',
-  },
-];
+const FIRM_PROFILE_PDF =
+  'https://www.nexirisconsultants.com/_files/ugd/9b0883_a8ad90d67710468a9bdab66b562c8b7a.pdf';
+const NEXIRIS_CONSULTANTS_URL = 'https://www.nexirisconsultants.com';
 
 export default function OurLegacy() {
-  const { openModal } = useModal();
   const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation();
-  const { ref: storyRef, isVisible: storyVisible } = useScrollAnimation();
-  const { ref: pillarsRef, isVisible: pillarsVisible } = useScrollAnimation();
-  const { ref: statsRef, isVisible: statsVisible } = useScrollAnimation();
+  const { ref: bodyRef, isVisible: bodyVisible } = useScrollAnimation();
   const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
 
   return (
-    <div className="min-h-screen bg-nexiris-dark">
-      {/* Hero */}
-      <section className="pt-32 pb-24 bg-nexiris-darker relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gold-400/5 via-transparent to-nexiris-navy/20 pointer-events-none" />
-        <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
-          <div
-            ref={heroRef}
-            className={`scroll-animate ${heroVisible ? 'visible' : ''}`}
+    <main className="bg-brand-frostWhite min-h-screen">
+      {/* Hero Banner */}
+      <section
+        className="relative py-28 md:py-36 bg-brand-dark overflow-hidden"
+        aria-labelledby="legacy-heading"
+      >
+        {/* Subtle background accent */}
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-brand-mintyBlue blur-3xl translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 left-0 w-64 h-64 rounded-full bg-brand-mintyBlue blur-3xl -translate-x-1/2 translate-y-1/2" />
+        </div>
+
+        <div
+          ref={heroRef}
+          className={`scroll-animate relative z-10 max-w-4xl mx-auto px-6 text-center ${heroVisible ? 'is-visible' : ''}`}
+        >
+          <span className="inline-block text-brand-mintyBlue font-semibold text-xs uppercase tracking-widest mb-4">
+            Our Heritage
+          </span>
+          <h1
+            id="legacy-heading"
+            className="font-heading font-bold text-4xl md:text-5xl lg:text-6xl text-white leading-tight mb-6"
           >
-            <div className="inline-flex items-center gap-2 bg-nexiris-navy border border-gold-400/30 rounded-full px-4 py-2 mb-8">
-              <div className="w-2 h-2 rounded-full bg-gold-400" />
-              <span className="font-montserrat text-xs font-semibold text-gold-400 tracking-widest uppercase">
-                Our Story
-              </span>
-            </div>
-            <h1 className="font-montserrat font-black text-5xl md:text-6xl text-nexiris-lighter mb-6 leading-tight">
-              Built on a Foundation of{' '}
-              <span className="gradient-text">Trust</span>
-            </h1>
-            <p className="text-nexiris-light text-xl leading-relaxed max-w-3xl mx-auto">
-              Nexiris Global was founded by trade finance professionals who witnessed firsthand the damage caused by inadequate counterparty due diligence. We built the intelligence infrastructure we wished had existed.
-            </p>
-          </div>
+            Our Legacy
+          </h1>
+          <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
+            Nexiris Global represents the evolution of a trusted trade intelligence and professional
+            advisory platform.
+          </p>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-24 bg-nexiris-dark relative">
-        <div className="max-w-4xl mx-auto px-6">
-          <div
-            ref={storyRef}
-            className={`scroll-animate ${storyVisible ? 'visible' : ''}`}
-          >
-            <div className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-10 shadow-dark-lg">
-              <h2 className="font-montserrat font-black text-3xl text-nexiris-lighter mb-6">
-                The Problem We Set Out to Solve
-              </h2>
-              <div className="space-y-4 text-nexiris-light leading-relaxed">
-                <p>
-                  International trade operates on trust — but trust without verification is a liability. For decades, importers and exporters have relied on informal networks, self-reported credentials, and generic credit scores to assess counterparties. The results have been predictably costly.
-                </p>
-                <p>
-                  Nexiris Global was established to fill this gap. Drawing on deep expertise in trade finance, regulatory compliance, and data intelligence, our founding team built a methodology specifically designed for the complexities of cross-border commerce.
-                </p>
-                <p>
-                  Today, we serve importers, exporters, banks, and trade finance institutions across 40+ countries — providing the independent intelligence they need to trade with confidence.
-                </p>
+      {/* Main Content */}
+      <section className="py-20 md:py-28">
+        <div
+          ref={bodyRef}
+          className={`scroll-animate max-w-4xl mx-auto px-6 ${bodyVisible ? 'is-visible' : ''}`}
+        >
+          {/* Heritage Story */}
+          <div className="bg-white border border-brand-mintyBlue/15 rounded-lg p-8 md:p-12 shadow-card mb-10">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-10 h-10 rounded-full bg-brand-mintyBlue/15 border border-brand-mintyBlue/30 flex items-center justify-center shrink-0">
+                <Globe size={18} className="text-brand-mintyBlue" strokeWidth={1.75} />
               </div>
+              <h2 className="font-heading font-bold text-2xl md:text-3xl text-brand-dark">
+                From Nexiris Consultants to Nexiris Global
+              </h2>
+            </div>
+
+            <div className="space-y-5 text-brand-dark/70 text-base leading-relaxed">
+              <p>
+                Nexiris Global represents the evolution of a trusted trade intelligence and professional
+                advisory platform. Our roots trace back to{' '}
+                <strong className="text-brand-dark font-semibold">Nexiris Consultants</strong> — a
+                specialist firm that built deep expertise in exporter verification, counterparty risk
+                assessment, governance review, and structured trade due diligence. Over more than two
+                decades, the firm established a reputation for rigorous, independent analysis — enabling
+                international buyers to navigate sourcing environments with clarity and confidence.
+              </p>
+              <p>
+                Through years of structured engagements across industries and jurisdictions, Nexiris
+                refined proprietary methodologies and analytical frameworks designed to bring discipline
+                and transparency to cross-border trade decisions. The development of the{' '}
+                <strong className="text-brand-dark font-semibold">Trade Trust Score™</strong> reflects
+                this structured evolution — transforming qualitative verification into measurable,
+                decision-support intelligence.
+              </p>
+              <p>
+                Today,{' '}
+                <strong className="text-brand-dark font-semibold">Nexiris Global</strong> carries that
+                foundation forward as a broader professional services platform — expanding geographic
+                reach, strengthening multidisciplinary capability, and integrating advanced analytical
+                systems to deliver institutional-grade risk intelligence.
+              </p>
+              <p>
+                Our commitment remains constant: to provide international buyers and procurement teams
+                with structured clarity, evidence-based assessment, and strategic insight — enabling
+                informed trade decisions grounded in verified information.
+              </p>
+              <p>
+                The name <strong className="text-brand-dark font-semibold">Iris</strong> represents
+                clarity of vision and disciplined perspective. In optics, the iris regulates light to
+                bring focus and definition. At Nexiris, this principle guides our approach — illuminating
+                complexity, structuring uncertainty, and delivering focused insight where risk must be
+                understood.
+              </p>
+              <p>
+                Our legacy stands for independence, precision, institutional rigor, and the confidence
+                that comes from structured expertise built over time.
+              </p>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* Core Pillars */}
-      <section className="py-24 bg-nexiris-darker relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div
-            ref={pillarsRef}
-            className={`text-center mb-16 scroll-animate ${pillarsVisible ? 'visible' : ''}`}
-          >
-            <h2 className="font-montserrat font-black text-4xl md:text-5xl text-nexiris-lighter mb-4">
-              Our Core{' '}
-              <span className="gradient-text">Pillars</span>
-            </h2>
-            <p className="text-nexiris-light text-lg max-w-2xl mx-auto">
-              Four principles that guide every report, every score, and every client relationship.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {pillars.map((pillar, i) => {
-              const Icon = pillar.icon;
-              return (
-                <div
-                  key={pillar.title}
-                  className={`scroll-animate ${pillarsVisible ? 'visible' : ''} hover-float`}
-                  style={{ transitionDelay: `${i * 120}ms` }}
-                >
-                  <div className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-8 h-full shadow-dark-lg">
-                    <div className="w-12 h-12 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center mb-6">
-                      <Icon className="w-6 h-6 text-gold-400" />
-                    </div>
-                    <h3 className="font-montserrat font-bold text-xl text-nexiris-lighter mb-3">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-nexiris-light text-sm leading-relaxed">
-                      {pillar.description}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section className="py-24 bg-nexiris-dark relative">
-        <div className="max-w-7xl mx-auto px-6">
-          <div
-            ref={statsRef}
-            className={`grid grid-cols-1 md:grid-cols-3 gap-8 scroll-animate ${statsVisible ? 'visible' : ''}`}
-          >
+          {/* Key Pillars */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
             {[
-              { value: '500+', label: 'Reports Delivered', sub: 'Since inception' },
-              { value: '40+', label: 'Countries Covered', sub: 'Active trade corridors' },
-              { value: '$42B+', label: 'Trade Value Screened', sub: 'In cross-border transactions' },
-            ].map((stat, i) => (
+              {
+                title: '25+ Years',
+                description: 'Of trade intelligence expertise carried forward into Nexiris Global.',
+              },
+              {
+                title: '30+ Industries',
+                description: 'Served across diverse sectors and global trade routes.',
+              },
+              {
+                title: '180+ Countries',
+                description: 'International buyers served across global trade routes.',
+              },
+            ].map((item) => (
               <div
-                key={stat.label}
-                className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-8 text-center shadow-dark-lg hover-float"
-                style={{ transitionDelay: `${i * 120}ms` }}
+                key={item.title}
+                className="bg-white border border-brand-mintyBlue/15 rounded-lg p-6 shadow-card text-center"
               >
-                <div className="font-montserrat font-black text-5xl gradient-text mb-2">
-                  {stat.value}
+                <div className="font-heading font-bold text-3xl text-brand-mintyBlue mb-2">
+                  {item.title}
                 </div>
-                <div className="font-montserrat font-bold text-lg text-nexiris-lighter mb-1">
-                  {stat.label}
-                </div>
-                <div className="text-nexiris-light text-sm">{stat.sub}</div>
+                <p className="text-brand-dark/60 text-sm leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-24 bg-nexiris-darker relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-gold-400/5 via-transparent to-nexiris-navy/30 pointer-events-none" />
-        <div className="max-w-3xl mx-auto px-6 text-center relative z-10">
-          <div
-            ref={ctaRef}
-            className={`scroll-animate ${ctaVisible ? 'visible' : ''}`}
-          >
-            <div className="bg-nexiris-navy border border-gold-400/30 rounded-3xl p-12 shadow-gold-glow relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold-400/5 to-transparent pointer-events-none rounded-3xl" />
-              <div className="relative z-10">
-                <h2 className="font-montserrat font-black text-4xl text-nexiris-lighter mb-6">
-                  Experience the{' '}
-                  <span className="gradient-text">Nexiris Difference</span>
-                </h2>
-                <p className="text-nexiris-light text-lg mb-8 leading-relaxed">
-                  Independent intelligence. Objective scoring. Actionable insights. Request your first Trade Trust Score today.
-                </p>
-                <button
-                  onClick={openModal}
-                  className="glass-btn-primary px-10 py-4 text-base rounded-xl font-montserrat font-bold"
-                >
-                  Request a Report
-                </button>
+      {/* CTA Section */}
+      <section className="pb-24">
+        <div
+          ref={ctaRef}
+          className={`scroll-animate max-w-4xl mx-auto px-6 ${ctaVisible ? 'is-visible' : ''}`}
+        >
+          <div className="bg-white border border-brand-mintyBlue/20 rounded-lg p-8 md:p-12 shadow-card text-center">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-10 h-10 rounded-full bg-brand-mintyBlue/15 border border-brand-mintyBlue/30 flex items-center justify-center shrink-0">
+                <FileText size={18} className="text-brand-mintyBlue" strokeWidth={1.75} />
               </div>
+            </div>
+            <h2 className="font-heading font-bold text-2xl md:text-3xl text-brand-dark mb-3">
+              Explore Our Firm Profile
+            </h2>
+            <p className="text-brand-dark/60 text-base leading-relaxed max-w-xl mx-auto mb-8">
+              Learn more about our methodology, team, and the full scope of our trade intelligence
+              capabilities in our official firm profile document.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              {/* Primary CTA — PDF */}
+              <a
+                href={FIRM_PROFILE_PDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-brand-mintyBlue text-white font-semibold px-8 py-3.5 rounded-md hover:bg-brand-mintyDark transition-colors shadow-minty hover-lift"
+                aria-label="View Firm Profile PDF (opens in new tab)"
+              >
+                <FileText size={16} />
+                View Firm Profile
+                <ExternalLink size={14} className="opacity-70" />
+              </a>
+
+              {/* Secondary CTA — Website */}
+              <a
+                href={NEXIRIS_CONSULTANTS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 border border-brand-mintyBlue text-brand-mintyBlue font-semibold px-8 py-3.5 rounded-md hover:bg-brand-frostGray transition-colors"
+                aria-label="Visit Nexiris Consultants website (opens in new tab)"
+              >
+                <Globe size={16} />
+                Visit Nexiris Consultants
+                <ExternalLink size={14} className="opacity-70" />
+              </a>
             </div>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }

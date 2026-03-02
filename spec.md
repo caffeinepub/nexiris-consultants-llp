@@ -1,11 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Revert all glassmorphism theme changes introduced in the most recent update (version 14), restoring the frontend UI to its prior state.
+**Goal:** Update the Our Legacy page with new body text and remove the Enquiries section from the application.
 
 **Planned changes:**
-- Restore all frontend files modified during the glassmorphism update to their pre-glassmorphism state
-- Remove any glassmorphism-specific utility classes or styles applied site-wide in version 14
-- Ensure Home, Annual Program, and Our Legacy pages render correctly without glassmorphism overrides
+- Replace all body text in the OurLegacy page with the provided six-paragraph content, preserving the Trade Trust Score™ symbol, existing layout, and scroll animations
+- Remove the Enquiries page (`ExportInquiries.tsx`) and its route from the router
+- Remove all navigation links pointing to the Enquiries page from the navigation bar and footer
+- Leave the InquiryModal and all consultation/enquiry buttons on other pages untouched
 
-**User-visible outcome:** The site visually matches the version prior to the glassmorphism update, with no glassmorphism styling active across any pages or components.
+**User-visible outcome:** The Our Legacy page displays the new text content, and the Enquiries section/page is no longer accessible or linked anywhere in the application.

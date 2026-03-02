@@ -1,21 +1,43 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
+  "summary": "Website project for Nexiris Global — a trade intelligence and professional advisory platform. Updates include replacing 'Our Legacy' section text with new content about the firm's history, Trade Trust Score™, and brand values, and removing the 'Enquiries' section.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-revert-all-glassmorphism-theme-changes-applied-in-the-most-recent-update-version-14-across-all-frontend-files-restoring-the-ui-to-its-prior-state-before-the-glassmorphism-theme-was-applied-site-wide",
-      "title": "Revert all glassmorphism theme changes applied in the most recent update (version 14) across all frontend files, restoring the UI to its prior state before the glassmorphism theme was applied site-wide.",
+      "id": "feature-replace-all-existing-body-text-in-the-ourlegacy-page-frontend-src-pages-ourlegacy-tsx-with-the-following-content-preserving-the-existing-page-layout-and-scroll-animations-our-legacy-nexiris-global-represents-the-evolution-of-a-trusted-trade-intelligence-and-professional-advisory-platform-our-roots-trace-back-to-nexiris-consultants-a-specialist-firm-that-built-deep-expertise-in-exporter-verification-counterparty-risk-assessment-governance-review-and-structured-trade-due-diligence-over-more-than-two-decades-the-firm-established-a-reputation-for-rigorous-independent-analysis-enabling-international-buyers-to-navigate-sourcing-environments-with-clarity-and-confidence-through-years-of-structured-engagements-across-industries-and-jurisdictions-nexiris-refined-proprietary-methodologies-and-analytical-frameworks-designed-to-bring-discipline-and-transparency-to-cross-border-trade-decisions-the-development-of-the-trade-trust-score-reflects-this-structured-evolution-transforming-qualitative-verification-into-measurable-decision-support-intelligence-today-nexiris-global-carries-that-foundation-forward-as-a-broader-professional-services-platform-expanding-geographic-reach-strengthening-multidisciplinary-capability-and-integrating-advanced-analytical-systems-to-deliver-institutional-grade-risk-intelligence-our-commitment-remains-constant-to-provide-international-buyers-and-procurement-teams-with-structured-clarity-evidence-based-assessment-and-strategic-insight-enabling-informed-trade-decisions-grounded-in-verified-information-the-name-iris-represents-clarity-of-vision-and-disciplined-perspective-in-optics-the-iris-regulates-light-to-bring-focus-and-definition-at-nexiris-this-principle-guides-our-approach-illuminating-complexity-structuring-uncertainty-and-delivering-focused-insight-where-risk-must-be-understood-our-legacy-stands-for-independence-precision-institutional-rigor-and-the-confidence-that-comes-from-structured-expertise-built-over-time",
+      "title": "Replace all existing body text in the OurLegacy page (frontend/src/pages/OurLegacy.tsx) with the following content, preserving the existing page layout and scroll animations:\n\n**Our Legacy**\n\nNexiris Global represents the evolution of a trusted trade intelligence and professional advisory platform.\n\nOur roots trace back to Nexiris Consultants — a specialist firm that built deep expertise in exporter verification, counterparty risk assessment, governance review, and structured trade due diligence. Over more than two decades, the firm established a reputation for rigorous, independent analysis — enabling international buyers to navigate sourcing environments with clarity and confidence.\n\nThrough years of structured engagements across industries and jurisdictions, Nexiris refined proprietary methodologies and analytical frameworks designed to bring discipline and transparency to cross-border trade decisions. The development of the Trade Trust Score™ reflects this structured evolution — transforming qualitative verification into measurable, decision-support intelligence.\n\nToday, Nexiris Global carries that foundation forward as a broader professional services platform — expanding geographic reach, strengthening multidisciplinary capability, and integrating advanced analytical systems to deliver institutional-grade risk intelligence.\n\nOur commitment remains constant: to provide international buyers and procurement teams with structured clarity, evidence-based assessment, and strategic insight — enabling informed trade decisions grounded in verified information.\n\nThe name Iris represents clarity of vision and disciplined perspective. In optics, the iris regulates light to bring focus and definition. At Nexiris, this principle guides our approach — illuminating complexity, structuring uncertainty, and delivering focused insight where risk must be understood.\n\nOur legacy stands for independence, precision, institutional rigor, and the confidence that comes from structured expertise built over time.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-remove-the-enquiries-section-entirely-from-the-application-this-includes-removing-any-dedicated-enquiries-section-component-or-block-rendered-on-any-page-removing-the-enquiries-route-and-page-frontend-src-pages-exportinquiries-tsx-from-the-router-in-frontend-src-app-tsx-and-removing-any-navigation-links-pointing-to-the-enquiries-page-the-inquirymodal-and-its-trigger-buttons-e-g-in-ctas-and-pricing-cards-should-remain-unaffected",
+      "title": "Remove the Enquiries section entirely from the application. This includes: removing any dedicated 'Enquiries' section component or block rendered on any page, removing the Enquiries route and page (frontend/src/pages/ExportInquiries.tsx) from the router in frontend/src/App.tsx, and removing any navigation links pointing to the Enquiries page. The InquiryModal and its trigger buttons (e.g., in CTAs and pricing cards) should remain unaffected.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
     }
   ],
-  "new_feature_requests": [],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Replace 'Our Legacy' section text with new content about Nexiris Global's history, Trade Trust Score™, name meaning, and core values",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Remove the Enquiries section from the page",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
   "projectName": "Nexiris Global",
   "clarification_mode": "instant",
   "clarification_rounds": 0

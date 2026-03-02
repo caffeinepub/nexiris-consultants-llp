@@ -1,94 +1,135 @@
 import { Link } from '@tanstack/react-router';
+import { Mail, MapPin, Heart } from 'lucide-react';
+import { useModal } from '../App';
 
 export default function Footer() {
+  const { openModal } = useModal();
   const year = new Date().getFullYear();
-  const appId = encodeURIComponent(window.location.hostname || 'nexiris-global');
+  const appId = encodeURIComponent(window.location.hostname || 'nexiris');
 
   return (
-    <footer className="bg-nexiris-darker border-t border-nexiris-slate/40">
-      <div className="max-w-7xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          {/* Brand */}
+    <footer className="bg-brand-dark text-white">
+      <div className="max-w-6xl mx-auto px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          {/* Brand Column */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="mb-5">
               <img
-                src="/assets/Nexiris Logo_page-0001.jpg"
+                src="/assets/generated/nexiris-logo.png"
                 alt="Nexiris Global"
-                className="h-10 w-auto rounded"
+                className="h-10 w-auto"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const sibling = target.nextElementSibling as HTMLElement;
+                  if (sibling) sibling.style.display = 'block';
+                }}
               />
-              <div>
-                <div className="font-montserrat font-bold text-lg text-nexiris-lighter tracking-wide">
-                  NEXIRIS
-                </div>
-                <div className="font-montserrat text-xs text-gold-400 tracking-widest uppercase">
-                  Global
-                </div>
-              </div>
+              <span className="font-heading font-bold text-2xl text-brand-mintyBlue hidden">
+                Nexiris Global
+              </span>
             </div>
-            <p className="text-nexiris-light text-sm leading-relaxed">
-              Independent trade intelligence for global commerce. Trusted by importers, exporters, and financial institutions worldwide.
+            <p className="text-white/70 text-sm leading-relaxed">
+              Independent trade verification and counterparty risk intelligence for global commerce.
             </p>
           </div>
 
-          {/* Services */}
+          {/* Services Column */}
           <div>
-            <h4 className="font-montserrat font-semibold text-nexiris-lighter text-sm tracking-widest uppercase mb-4">
+            <h3 className="font-heading font-semibold text-sm uppercase tracking-widest text-brand-mintyBlue mb-5">
               Services
-            </h4>
-            <ul className="space-y-2">
+            </h3>
+            <ul className="space-y-3">
               {[
-                { label: 'Trade Trust Score™', href: '/' },
-                { label: 'Annual Program', href: '/annual-program' },
-                { label: 'Our Legacy', href: '/our-legacy' },
+                { label: 'Trade Verification', anchor: 'what-we-deliver' },
+                { label: 'Compliance Reports', anchor: 'what-we-deliver' },
+                { label: 'Trade Trust Score™', anchor: 'trade-score' },
               ].map((item) => (
                 <li key={item.label}>
-                  <Link
-                    to={item.href}
-                    className="text-nexiris-light text-sm hover:text-gold-400 transition-colors duration-200"
+                  <button
+                    onClick={() => {
+                      const el = document.getElementById(item.anchor);
+                      el?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="text-white/70 text-sm hover:text-brand-mintyBlue transition-colors text-left"
                   >
                     {item.label}
-                  </Link>
+                  </button>
                 </li>
               ))}
+              <li>
+                <Link
+                  to="/annual-program"
+                  className="text-white/70 text-sm hover:text-brand-mintyBlue transition-colors"
+                >
+                  Annual Program
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/our-legacy"
+                  className="text-white/70 text-sm hover:text-brand-mintyBlue transition-colors"
+                >
+                  Our Legacy
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact Column */}
           <div>
-            <h4 className="font-montserrat font-semibold text-nexiris-lighter text-sm tracking-widest uppercase mb-4">
+            <h3 className="font-heading font-semibold text-sm uppercase tracking-widest text-brand-mintyBlue mb-5">
               Contact
-            </h4>
-            <p className="text-nexiris-light text-sm mb-2">
-              For inquiries and partnerships:
-            </p>
-            <a
-              href="mailto:info@nexirisglobal.com"
-              className="text-gold-400 text-sm hover:text-gold-300 transition-colors duration-200"
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <Mail size={15} className="text-brand-mintyBlue mt-0.5 shrink-0" />
+                <a
+                  href="mailto:nexirisconsultants@gmail.com"
+                  className="text-white/70 text-sm hover:text-brand-mintyBlue transition-colors break-all"
+                >
+                  nexirisconsultants@gmail.com
+                </a>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin size={15} className="text-brand-mintyBlue mt-0.5 shrink-0" />
+                <address className="text-white/70 text-sm not-italic leading-relaxed">
+                  Unit no. 419, DLF CORPORATE GREENS,<br />
+                  Sector 74A, Gurugram,<br />
+                  Haryana 122004
+                </address>
+              </li>
+            </ul>
+            <button
+              onClick={openModal}
+              className="mt-6 bg-brand-mintyBlue text-white font-semibold text-sm px-5 py-2.5 rounded-md hover:bg-brand-mintyDark transition-colors"
             >
-              info@nexirisglobal.com
-            </a>
+              Request Consultation
+            </button>
           </div>
         </div>
 
         {/* Divider */}
-        <div className="gold-divider mb-8" />
-
-        {/* Bottom */}
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-nexiris-muted">
-          <p>© {year} Nexiris Global. All rights reserved.</p>
-          <p>
-            Built with{' '}
-            <span className="text-gold-400">♥</span>{' '}
-            using{' '}
-            <a
-              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appId}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gold-400 hover:text-gold-300 transition-colors"
-            >
-              caffeine.ai
-            </a>
-          </p>
+        <div className="border-t border-white/10 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="text-white/40 text-xs text-center md:text-left">
+              <p>© {year} Nexiris Global. All rights reserved.</p>
+              <p className="mt-1">
+                The information provided in our reports is for due diligence purposes only. Nexiris Global does not provide legal, financial, or investment advice.
+              </p>
+            </div>
+            <div className="text-white/40 text-xs flex items-center gap-1 shrink-0">
+              Built with <Heart size={12} className="text-brand-mintyBlue fill-brand-mintyBlue" /> using{' '}
+              <a
+                href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${appId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-brand-mintyBlue transition-colors"
+              >
+                caffeine.ai
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </footer>

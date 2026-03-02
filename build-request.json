@@ -1,36 +1,60 @@
 {
   "kind": "build_request",
-  "title": "Revert glassmorphism theme to previous version",
+  "title": "Update Our Legacy text and remove Enquiries section",
   "projectName": "Nexiris Global",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Revert all glassmorphism theme changes applied in the most recent update (version 14) across all frontend files, restoring the UI to its prior state before the glassmorphism theme was applied site-wide.",
+      "text": "Replace all existing body text in the OurLegacy page (frontend/src/pages/OurLegacy.tsx) with the following content, preserving the existing page layout and scroll animations:\n\n**Our Legacy**\n\nNexiris Global represents the evolution of a trusted trade intelligence and professional advisory platform.\n\nOur roots trace back to Nexiris Consultants — a specialist firm that built deep expertise in exporter verification, counterparty risk assessment, governance review, and structured trade due diligence. Over more than two decades, the firm established a reputation for rigorous, independent analysis — enabling international buyers to navigate sourcing environments with clarity and confidence.\n\nThrough years of structured engagements across industries and jurisdictions, Nexiris refined proprietary methodologies and analytical frameworks designed to bring discipline and transparency to cross-border trade decisions. The development of the Trade Trust Score™ reflects this structured evolution — transforming qualitative verification into measurable, decision-support intelligence.\n\nToday, Nexiris Global carries that foundation forward as a broader professional services platform — expanding geographic reach, strengthening multidisciplinary capability, and integrating advanced analytical systems to deliver institutional-grade risk intelligence.\n\nOur commitment remains constant: to provide international buyers and procurement teams with structured clarity, evidence-based assessment, and strategic insight — enabling informed trade decisions grounded in verified information.\n\nThe name Iris represents clarity of vision and disciplined perspective. In optics, the iris regulates light to bring focus and definition. At Nexiris, this principle guides our approach — illuminating complexity, structuring uncertainty, and delivering focused insight where risk must be understood.\n\nOur legacy stands for independence, precision, institutional rigor, and the confidence that comes from structured expertise built over time.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-4"
         ],
         "quotes": [
-          "nah revert back lol"
+          "replace thext in. Our legacy with this text",
+          "Nexiris Global represents the evolution of a trusted trade intelligence and professional advisory platform."
         ]
       },
       "acceptanceCriteria": [
-        "All frontend files that were modified to apply the glassmorphism theme are restored to their pre-glassmorphism state.",
-        "The site visually matches the version prior to the glassmorphism update.",
-        "No glassmorphism-specific utility classes or styles introduced in the latest update remain active across components.",
-        "All pages (Home, Annual Program, Our Legacy) render correctly without glassmorphism overrides from the reverted changes."
+        "The OurLegacy page displays all six paragraphs of the new text verbatim",
+        "The Trade Trust Score™ trademark symbol is preserved",
+        "Existing scroll-triggered animations and layout structure remain intact",
+        "No old legacy text content remains visible on the page"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Remove the Enquiries section entirely from the application. This includes: removing any dedicated 'Enquiries' section component or block rendered on any page, removing the Enquiries route and page (frontend/src/pages/ExportInquiries.tsx) from the router in frontend/src/App.tsx, and removing any navigation links pointing to the Enquiries page. The InquiryModal and its trigger buttons (e.g., in CTAs and pricing cards) should remain unaffected.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5",
+          "msg-6"
+        ],
+        "quotes": [
+          "Remove the enquires section",
+          "I'll remove the \"Enquiries\" section from the page entirely"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No 'Enquiries' page or route is accessible in the application",
+        "No navigation link to the Enquiries page appears in the Navigation bar or Footer",
+        "The rest of the application (Home, Annual Program, Our Legacy pages) renders without errors",
+        "The InquiryModal and consultation enquiry buttons continue to function normally"
       ]
     }
   ],
   "constraints": [
-    "Do not change backend logic or data models.",
-    "Do not modify immutable frontend paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui."
+    "Do not remove the InquiryModal or any consultation/enquiry buttons on other pages",
+    "Preserve all existing scroll animations and layout structure on the OurLegacy page",
+    "Do not modify backend logic"
   ],
   "nonGoals": [
-    "Introducing any new design changes or features.",
-    "Removing the glassmorphism CSS tokens from the design system if they were pre-existing before version 14."
+    "Redesigning the OurLegacy page layout or visual style",
+    "Removing the backend inquiry submission or CSV export functionality",
+    "Changes to any other page content beyond what is specified"
   ],
   "imageRequirements": {
     "required": [],

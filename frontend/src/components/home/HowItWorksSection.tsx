@@ -1,95 +1,142 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
-import { FileText, Search, BarChart3, Download } from 'lucide-react';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { Search, FileText, BarChart2, Send } from 'lucide-react';
+
+interface HowItWorksSectionProps {
+  onEnquire?: () => void;
+}
 
 const steps = [
   {
-    icon: FileText,
-    step: '01',
-    title: 'Submit',
-    description: 'Provide the name and jurisdiction of your trade partner. Our team begins the intelligence gathering process immediately.',
-  },
-  {
+    number: '01',
     icon: Search,
-    step: '02',
-    title: 'Research',
-    description: 'Our analysts access 50+ proprietary and public data sources across financial, regulatory, and trade databases.',
+    title: 'Submit Your Request',
+    description:
+      'Provide the name and details of the trading counterparty you wish to verify. Our team reviews your request and confirms scope within one business day.',
   },
   {
-    icon: BarChart3,
-    step: '03',
-    title: 'Score',
-    description: 'The Trade Trust Score™ algorithm synthesizes all data points into a comprehensive, weighted intelligence score.',
+    number: '02',
+    icon: FileText,
+    title: 'Deep-Dive Research',
+    description:
+      'Our analysts conduct an 8-dimension investigation — covering MCA filings, OSINT trade data, compliance records, and financial health indicators.',
   },
   {
-    icon: Download,
-    step: '04',
-    title: 'Report',
-    description: 'Receive your full intelligence report within 5 business days, complete with actionable recommendations.',
+    number: '03',
+    icon: BarChart2,
+    title: 'Trade Trust Score™',
+    description:
+      'We synthesise findings into a proprietary Trade Trust Score™ with a detailed breakdown across each verification dimension.',
+  },
+  {
+    number: '04',
+    icon: Send,
+    title: 'Report Delivered',
+    description:
+      'Receive a comprehensive, executive-ready PDF report within 3–5 business days, valid for 12 months and ready for compliance or board review.',
   },
 ];
 
-export default function HowItWorksSection() {
-  const { ref, isVisible } = useScrollAnimation();
+export default function HowItWorksSection({ onEnquire }: HowItWorksSectionProps) {
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: stepsRef, isVisible: stepsVisible } = useScrollAnimation();
+  const { ref: ctaRef, isVisible: ctaVisible } = useScrollAnimation();
 
   return (
-    <section id="how-it-works" className="py-24 bg-nexiris-dark relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section
+      id="how-it-works"
+      className="py-24 bg-gradient-to-br from-brand-dark via-brand-dark to-[oklch(0.22_0.04_200)]"
+      aria-labelledby="how-it-works-heading"
+    >
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Title */}
         <div
-          ref={ref}
-          className={`text-center mb-16 scroll-animate ${isVisible ? 'visible' : ''}`}
+          ref={titleRef}
+          className={`scroll-animate text-center mb-16 ${titleVisible ? 'is-visible' : ''}`}
         >
-          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-nexiris-lighter mb-4">
-            How It{' '}
-            <span className="gradient-text">Works</span>
+          <span className="inline-block text-brand-mintyBlue font-semibold text-xs uppercase tracking-widest mb-3">
+            Our Process
+          </span>
+          <h2
+            id="how-it-works-heading"
+            className="font-heading font-bold text-3xl md:text-4xl text-white mb-4"
+          >
+            How It Works
           </h2>
-          <p className="text-nexiris-light text-lg max-w-2xl mx-auto">
-            A streamlined four-step process from submission to actionable intelligence.
+          <p className="text-white/60 text-base max-w-xl mx-auto leading-relaxed">
+            From request to report in four transparent steps — no guesswork, no delays.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-          {steps.map((step, i) => {
+        {/* Steps */}
+        <div
+          ref={stepsRef}
+          className={`scroll-animate ${stepsVisible ? 'is-visible' : ''} grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6`}
+        >
+          {steps.map((step, index) => {
             const Icon = step.icon;
             return (
               <div
-                key={step.step}
-                className={`scroll-animate ${isVisible ? 'visible' : ''} hover-float relative`}
-                style={{ transitionDelay: `${i * 120}ms` }}
+                key={step.number}
+                className="relative flex flex-col items-start p-6 bg-white/5 border border-white/10 rounded-lg hover:border-brand-mintyBlue/40 hover:bg-white/8 transition-all duration-300"
+                style={{ transitionDelay: stepsVisible ? `${index * 80}ms` : '0ms' }}
               >
-                {/* Connector line (desktop) */}
-                {i < steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-10 left-full w-full h-px bg-gradient-to-r from-gold-400/40 to-transparent z-0 -translate-y-1/2" />
-                )}
-                <div className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-8 h-full shadow-dark-lg relative z-10">
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-12 h-12 rounded-xl bg-gold-400/10 border border-gold-400/20 flex items-center justify-center">
-                      <Icon className="w-6 h-6 text-gold-400" />
-                    </div>
-                    <span className="font-montserrat font-black text-3xl text-nexiris-slate/60">
-                      {step.step}
-                    </span>
-                  </div>
-                  <h3 className="font-montserrat font-bold text-xl text-nexiris-lighter mb-3">
-                    {step.title}
-                  </h3>
-                  <p className="text-nexiris-light text-sm leading-relaxed">
-                    {step.description}
-                  </p>
+                {/* Step number */}
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-brand-mintyBlue/15 border border-brand-mintyBlue/30 mb-4">
+                  <span className="font-heading font-bold text-sm text-brand-mintyBlue">
+                    {step.number}
+                  </span>
                 </div>
+
+                {/* Icon */}
+                <Icon size={22} className="text-brand-mintyBlue mb-3" strokeWidth={1.75} />
+
+                {/* Content */}
+                <h3 className="font-heading font-semibold text-base text-white mb-2">
+                  {step.title}
+                </h3>
+                <p className="text-white/55 text-sm leading-relaxed">{step.description}</p>
+
+                {/* Connector arrow (desktop only, not on last item) */}
+                {index < steps.length - 1 && (
+                  <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-10">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path
+                        d="M2 8h12M10 4l4 4-4 4"
+                        stroke="oklch(0.72 0.15 175)"
+                        strokeWidth="1.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </div>
+                )}
               </div>
             );
           })}
         </div>
 
-        {/* Delivery callout */}
-        <div className={`scroll-animate ${isVisible ? 'visible' : ''} text-center`}>
-          <div className="inline-block bg-nexiris-navy border border-gold-400/30 rounded-2xl px-10 py-6">
-            <p className="font-montserrat font-semibold text-nexiris-lighter text-lg">
-              Reports delivered within{' '}
-              <span className="gradient-text font-black">5 business days</span>
-              {' '}— rush options available
+        {/* Delivery callout strip */}
+        <div
+          ref={ctaRef}
+          className={`scroll-animate ${ctaVisible ? 'is-visible' : ''} mt-12 flex flex-col sm:flex-row items-center justify-between gap-6 bg-brand-mintyBlue/10 border border-brand-mintyBlue/25 rounded-lg px-8 py-5`}
+        >
+          <div className="text-center sm:text-left">
+            <p className="font-heading font-semibold text-white text-base">
+              Typical delivery:{' '}
+              <span className="text-brand-mintyBlue">3–5 business days</span>
+            </p>
+            <p className="text-white/50 text-sm mt-0.5">
+              Priority 48-hour turnaround available on the Annual Program.
             </p>
           </div>
+          {onEnquire && (
+            <button
+              onClick={onEnquire}
+              className="shrink-0 bg-brand-mintyBlue text-white font-semibold text-sm px-7 py-3 rounded-md hover:bg-brand-mintyDark transition-colors shadow-minty"
+            >
+              Get Started
+            </button>
+          )}
         </div>
       </div>
     </section>

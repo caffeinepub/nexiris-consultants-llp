@@ -1,87 +1,54 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Revert glassmorphism theme to previous version",
+  "title": "Update Our Legacy text and remove Enquiries section",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Revert all glassmorphism theme changes applied in version 14 across all frontend files, restoring the UI to its prior state before the glassmorphism theme was applied site-wide",
+      "summary": "Replace all body text in the OurLegacy page with new content while preserving layout and scroll animations",
       "acceptanceCriteria": [
-        "All frontend files that were modified to apply the glassmorphism theme are restored to their pre-glassmorphism state.",
-        "The site visually matches the version prior to the glassmorphism update.",
-        "No glassmorphism-specific utility classes or styles introduced in the latest update remain active across components.",
-        "All pages (Home, Annual Program, Our Legacy) render correctly without glassmorphism overrides from the reverted changes."
+        "The OurLegacy page displays all six paragraphs of the new text verbatim",
+        "The Trade Trust Score™ trademark symbol is preserved",
+        "Existing scroll-triggered animations and layout structure remain intact",
+        "No old legacy text content remains visible on the page"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/pages/OurLegacy.tsx",
           "operation": "modify",
-          "description": "Remove glassmorphism-specific CSS custom properties and utility classes introduced in version 14. Restore the pre-glassmorphism global stylesheet with original color tokens and base styles, removing glass-card, glass-border, glass-glow, and related glassmorphism utilities."
+          "description": "Replace the entire body text content in the OurLegacy page component with the six new paragraphs provided in the BuildRequest. Preserve the existing page structure, scroll-triggered animation hooks (useScrollAnimation), heading hierarchy, and section layout. Ensure the Trade Trust Score™ trademark symbol is correctly rendered. Remove all old legacy text content."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Remove the Enquiries page, route, and all navigation links to it while preserving the InquiryModal functionality",
+      "acceptanceCriteria": [
+        "No 'Enquiries' page or route is accessible in the application",
+        "No navigation link to the Enquiries page appears in the Navigation bar or Footer",
+        "The rest of the application (Home, Annual Program, Our Legacy pages) renders without errors",
+        "The InquiryModal and consultation enquiry buttons continue to function normally"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Remove the ExportInquiries route and its import from the router configuration. Ensure the Home, AnnualProgram, and OurLegacy routes remain functional. The Layout component with Navigation, Footer, and InquiryModal should continue to work correctly."
         },
         {
-          "path": "frontend/tailwind.config.js",
+          "path": "frontend/src/pages/ExportInquiries.tsx",
+          "operation": "delete",
+          "description": "Delete the ExportInquiries page component file as it is no longer needed after removing the Enquiries route."
+        },
+        {
+          "path": "frontend/src/components/Navigation.tsx",
           "operation": "modify",
-          "description": "Remove glassmorphism theme extensions added in version 14 including glass color tokens, backdrop blur scales, and glassmorphism-specific box shadows. Restore the previous Tailwind configuration with original theme settings."
+          "description": "Remove any navigation link or menu item pointing to the Enquiries/ExportInquiries page. Preserve all other navigation links and the mobile menu inquiry modal trigger."
         },
         {
           "path": "frontend/src/components/Footer.tsx",
           "operation": "modify",
-          "description": "Remove glassmorphism background styling and glass effects from the footer component. Restore the previous footer design with original background treatment and styling that existed before version 14."
-        },
-        {
-          "path": "frontend/src/components/home/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism styling from hero stat cards and any glass effects applied to the hero section. Restore the previous hero section design with original card styling."
-        },
-        {
-          "path": "frontend/src/components/home/ProblemSection.tsx",
-          "operation": "modify",
-          "description": "Remove glass-styled card treatments from the three risk cards. Restore the previous card styling without glassmorphism effects."
-        },
-        {
-          "path": "frontend/src/components/home/TradeScoreSection.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism effects from the Trade Trust Score section. Restore the previous styling for the progress bars and radar chart visualization area."
-        },
-        {
-          "path": "frontend/src/components/home/WhatWeDeliverSection.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism styling from deliverable cards. Restore the previous card design for the eight deliverable items."
-        },
-        {
-          "path": "frontend/src/components/home/HowItWorksSection.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism effects from the four-step process cards. Restore the previous card styling for the Submit, Research, Score, and Report steps."
-        },
-        {
-          "path": "frontend/src/components/home/AnnualProgramSection.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism styling from pricing plan cards. Restore the previous design for Single Report and Annual Program cards."
-        },
-        {
-          "path": "frontend/src/components/home/CredibilitySection.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism effects from stats metric cards. Restore the previous styling for the three key metrics display."
-        },
-        {
-          "path": "frontend/src/components/home/FinalCTASection.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism card styling from the final call-to-action section. Restore the previous CTA card design."
-        },
-        {
-          "path": "frontend/src/components/annual/PricingSection.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism styling from annual program pricing cards. Restore the previous design for the pricing section."
-        },
-        {
-          "path": "frontend/src/components/annual/FAQSection.tsx",
-          "operation": "modify",
-          "description": "Remove any glassmorphism effects applied to the FAQ accordion section. Restore the previous accordion styling."
-        },
-        {
-          "path": "frontend/src/pages/OurLegacy.tsx",
-          "operation": "modify",
-          "description": "Remove glassmorphism styling from core pillars cards and any glass effects on the legacy page. Restore the previous design for Independence, Transparency, Global Reach, and Precision sections."
+          "description": "Remove any link to the Enquiries page from the footer services list. Preserve all other footer content including the smooth-scroll section links and contact information."
         }
       ]
     }

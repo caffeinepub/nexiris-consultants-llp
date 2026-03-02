@@ -1,122 +1,116 @@
-import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useScrollAnimation } from '../../hooks/useScrollAnimation';
+import { Check } from 'lucide-react';
 
 interface PricingSectionProps {
   onEnquire: () => void;
 }
 
+const singleFeatures = [
+  'Full 8-dimension verification',
+  'Trade Trust Score™',
+  'Executive summary report',
+  'Delivered in 3–5 business days',
+  'Valid for 12 months',
+];
+
+const annualFeatures = [
+  'Up to 10 verifications per year',
+  'Priority 48-hour turnaround',
+  'Dedicated account manager',
+  'Quarterly compliance briefings',
+  'Custom reporting templates',
+  'API access for integrations',
+];
+
 export default function PricingSection({ onEnquire }: PricingSectionProps) {
-  const { ref, isVisible } = useScrollAnimation();
+  const { ref: titleRef, isVisible: titleVisible } = useScrollAnimation();
+  const { ref: cardsRef, isVisible: cardsVisible } = useScrollAnimation();
 
   return (
-    <section className="py-24 bg-nexiris-dark relative">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-24 bg-brand-frostWhite" aria-labelledby="pricing-heading">
+      <div className="max-w-5xl mx-auto px-6">
         <div
-          ref={ref}
-          className={`text-center mb-16 scroll-animate ${isVisible ? 'visible' : ''}`}
+          ref={titleRef}
+          className={`scroll-animate text-center mb-14 ${titleVisible ? 'is-visible' : ''}`}
         >
-          <h2 className="font-montserrat font-black text-4xl md:text-5xl text-nexiris-lighter mb-4">
-            Annual Program{' '}
-            <span className="gradient-text">Pricing</span>
-          </h2>
-          <p className="text-nexiris-light text-lg max-w-2xl mx-auto">
-            Flexible intelligence packages designed for businesses of all sizes engaged in international trade.
+          <h1 id="pricing-heading" className="font-heading font-bold text-4xl md:text-5xl text-brand-dark mb-4">
+            Pricing
+          </h1>
+          <p className="text-brand-dark/60 text-lg max-w-xl mx-auto">
+            Transparent, straightforward pricing for independent Indian exporter verification and trade due diligence.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div
+          ref={cardsRef}
+          className={`scroll-animate ${cardsVisible ? 'is-visible' : ''} grid grid-cols-1 md:grid-cols-2 gap-8`}
+        >
           {/* Single Report */}
-          <div
-            className={`scroll-animate ${isVisible ? 'visible' : ''} hover-float`}
-            style={{ transitionDelay: '0ms' }}
-          >
-            <div className="bg-nexiris-navy border border-nexiris-slate/50 rounded-2xl p-8 h-full shadow-dark-lg">
-              <h3 className="font-montserrat font-bold text-2xl text-nexiris-lighter mb-2">
-                Single Report
-              </h3>
-              <p className="text-nexiris-light text-sm mb-6">
-                Ideal for one-time due diligence requirements.
-              </p>
-              <div className="mb-8">
-                <span className="font-montserrat font-black text-4xl gradient-text">
-                  Custom
-                </span>
-                <span className="text-nexiris-light text-sm ml-2">per report</span>
-              </div>
-              <ul className="space-y-3 mb-8">
-                {[
-                  'Full Trade Trust Score™ report',
-                  'Comprehensive background check',
-                  'Regulatory & sanctions screening',
-                  'Financial health assessment',
-                  '5-business-day delivery',
-                  'PDF + digital report',
-                ].map((feature) => (
-                  <li key={feature} className="flex items-center gap-3 text-sm text-nexiris-light">
-                    <div className="w-1.5 h-1.5 rounded-full bg-gold-400 flex-shrink-0" />
-                    {feature}
-                  </li>
-                ))}
-              </ul>
-              <button
-                onClick={onEnquire}
-                className="glass-btn w-full py-3 rounded-xl font-montserrat font-semibold text-sm"
-              >
-                Enquire Now
-              </button>
+          <div className="bg-white border border-brand-mintyBlue/20 rounded-lg p-8 hover-float shadow-card hover:shadow-card-hover transition-shadow">
+            <div className="mb-6">
+              <h2 className="font-heading font-bold text-2xl text-brand-dark mb-1">Single Report</h2>
+              <p className="text-brand-dark/50 text-sm">One-time trade verification</p>
             </div>
+            <div className="mb-6">
+              <span className="font-heading font-bold text-5xl text-brand-dark">$649</span>
+              <span className="text-brand-dark/40 text-sm ml-2">per report</span>
+            </div>
+            <ul className="space-y-3 mb-8">
+              {singleFeatures.map((f) => (
+                <li key={f} className="flex items-center gap-3 text-sm text-brand-dark/70">
+                  <Check size={15} className="text-brand-mintyBlue shrink-0" strokeWidth={2.5} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={onEnquire}
+              className="w-full border border-brand-mintyBlue text-brand-mintyBlue font-semibold py-3.5 rounded-md hover:bg-brand-frostGray transition-colors text-sm"
+            >
+              Request Single Report
+            </button>
           </div>
 
           {/* Annual Program */}
-          <div
-            className={`scroll-animate ${isVisible ? 'visible' : ''} hover-float`}
-            style={{ transitionDelay: '120ms' }}
-          >
-            <div className="bg-nexiris-navy border border-gold-400/40 rounded-2xl p-8 h-full shadow-gold-glow relative overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-gold-400/5 to-transparent pointer-events-none rounded-2xl" />
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-2">
-                  <h3 className="font-montserrat font-bold text-2xl text-nexiris-lighter">
-                    Annual Program
-                  </h3>
-                  <span className="text-xs font-montserrat font-semibold text-nexiris-dark bg-gold-400 rounded-full px-3 py-1">
-                    Best Value
-                  </span>
-                </div>
-                <p className="text-nexiris-light text-sm mb-6">
-                  Comprehensive intelligence for active international traders.
-                </p>
-                <div className="mb-8">
-                  <span className="font-montserrat font-black text-4xl gradient-text">
-                    Custom
-                  </span>
-                  <span className="text-nexiris-light text-sm ml-2">annual pricing</span>
-                </div>
-                <ul className="space-y-3 mb-8">
-                  {[
-                    'Unlimited Trade Trust Scores™',
-                    'Priority 3-business-day delivery',
-                    'Dedicated senior analyst',
-                    'Quarterly global market briefings',
-                    'Real-time monitoring alerts',
-                    'API access for integration',
-                    'Custom reporting formats',
-                    'Executive briefing sessions',
-                  ].map((feature) => (
-                    <li key={feature} className="flex items-center gap-3 text-sm text-nexiris-light">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gold-400 flex-shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <button
-                  onClick={onEnquire}
-                  className="glass-btn-primary w-full py-3 rounded-xl font-montserrat font-bold text-sm"
-                >
-                  Enquire Now
-                </button>
-              </div>
+          <div className="bg-brand-dark rounded-lg p-8 hover-float shadow-card-hover relative overflow-hidden">
+            <div className="absolute top-4 right-4 bg-brand-mintyBlue text-white text-xs font-semibold px-3 py-1 rounded-full">
+              Best Value
             </div>
+            <div className="mb-6">
+              <h2 className="font-heading font-bold text-2xl text-white mb-1">Annual Program</h2>
+              <p className="text-white/50 text-sm">Ongoing trade intelligence</p>
+            </div>
+            <div className="mb-6">
+              <span className="font-heading font-bold text-5xl text-brand-mintyBlue">$5,499</span>
+              <span className="text-white/40 text-sm ml-2">per year</span>
+            </div>
+            <ul className="space-y-3 mb-8">
+              {annualFeatures.map((f) => (
+                <li key={f} className="flex items-center gap-3 text-sm text-white/75">
+                  <Check size={15} className="text-brand-mintyBlue shrink-0" strokeWidth={2.5} />
+                  {f}
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={onEnquire}
+              className="w-full bg-brand-mintyBlue text-white font-semibold py-3.5 rounded-md hover:bg-brand-mintyDark transition-colors text-sm shadow-minty"
+            >
+              Enquire About Annual Program
+            </button>
           </div>
+        </div>
+
+        {/* Trust Note */}
+        <div className="mt-10 p-6 bg-white border border-brand-mintyBlue/15 rounded-lg text-center shadow-card">
+          <p className="text-brand-dark/60 text-sm leading-relaxed">
+            All reports are delivered by experienced trade verification specialists. Pricing is in USD and excludes applicable taxes.
+            Volume discounts available for enterprise clients.{' '}
+            <button onClick={onEnquire} className="text-brand-mintyBlue font-semibold hover:underline">
+              Contact us
+            </button>{' '}
+            to discuss your requirements.
+          </p>
         </div>
       </div>
     </section>

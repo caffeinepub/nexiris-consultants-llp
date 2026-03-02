@@ -36,24 +36,21 @@ const queryClient = new QueryClient({
 function Layout() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  const openModal = () => setModalOpen(true);
-  const closeModal = () => setModalOpen(false);
-
   return (
     <ModalContext.Provider
       value={{
-        openModal,
-        closeModal,
+        openModal: () => setModalOpen(true),
+        closeModal: () => setModalOpen(false),
         isModalOpen: modalOpen,
       }}
     >
       <div className="min-h-screen flex flex-col bg-background font-sans">
-        <Navigation onEnquire={openModal} />
+        <Navigation />
         <div className="flex-1">
           <Outlet />
         </div>
         <Footer />
-        <InquiryModal isOpen={modalOpen} onClose={closeModal} />
+        <InquiryModal />
       </div>
     </ModalContext.Provider>
   );
